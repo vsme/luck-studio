@@ -1,2 +1,1270 @@
-The requested file read failed. See warnings for details.
-The requested file read failed. See warnings for details.
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0a">
+  <meta name="description" content="LUCK — 抛硬币与 4–12 面骰子。点击轻抛，长按蓄力。">
+  <title>LUCK · 幸运实验室</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0b0b'/%3E%3Cpath d='M32 6L37 26L58 32L37 38L32 58L26 38L6 32L26 26Z' fill='%23e4bd7c'/%3E%3C/svg%3E">
+  <style>
+:root{color-scheme:dark;--bg:#090a0a;--gold:#e9c68e;--gold-soft:#ad9270;--text:#e6dccb;--muted:#8a867e;--line:rgba(216,187,139,.14);--power:0;--serif:Georgia,'Noto Serif CJK SC','Songti SC',SimSun,serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg)}body{font:14px/1.6 var(--sans);color:var(--text);overflow-x:hidden}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button{color:inherit;border:0;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:5px}button:disabled{cursor:default}a{color:inherit;text-decoration:none}button,.interaction-zone{-webkit-user-select:none;user-select:none}button{touch-action:manipulation}button .icon{pointer-events:none}::selection{background:#755b34;color:#fff}button svg,svg.icon{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.icon-definitions{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 48% 45%,#30241838,transparent 46%),linear-gradient(110deg,#0b0c0c,#080909 60%)}.light-beam{position:absolute;width:220px;height:1150px;top:-580px;filter:blur(25px);transform-origin:top;opacity:.22;background:linear-gradient(90deg,transparent,#d5ae7470,transparent);mask-image:linear-gradient(#000,#0008 35%,transparent 87%)}.beam-one{left:8%;transform:rotate(-29deg)}.beam-two{right:22%;transform:rotate(30deg);width:140px;opacity:.15}.ambient-orb{position:absolute;top:14%;left:calc(50% - 380px);width:760px;height:700px;background:radial-gradient(ellipse,#ac763316,transparent 62%)}.grain{position:absolute;inset:0;opacity:.036;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.6' filter='url(%23n)'/%3E%3C/svg%3E")}.experience{position:relative;max-width:1600px;min-height:100svh;margin:auto;display:flex;flex-direction:column;padding:0 64px}.topbar{display:flex;align-items:center;justify-content:space-between;height:95px;border-bottom:1px solid var(--line);flex-shrink:0}.wordmark{display:flex;gap:17px;align-items:center}.wordmark>span:first-of-type{font-family:var(--serif);font-size:28px;letter-spacing:8px;color:#f0d8ad}.wordmark>.icon{color:#cfb17e;width:27px;height:27px;stroke-width:.85}.wordmark-divider{height:18px;width:1px;background:var(--line);margin-left:2px}.wordmark-note{font-size:9px;letter-spacing:2.1px;color:#8a7f6e}.header-actions{display:flex;gap:29px}.text-button{display:flex;align-items:center;gap:9px;background:transparent;font-size:12px;letter-spacing:2px;color:#c8bdae;padding:8px 0;transition:color .2s}.text-button:hover{color:var(--gold)}.text-button>.icon{height:19px;width:19px;color:var(--gold-soft)}.history-count{font-size:9px;min-width:17px;height:17px;line-height:17px;border:1px solid var(--line);border-radius:4px;text-align:center;letter-spacing:0;color:#9e896b}.hero-heading{text-align:center;margin:30px 0 0;position:relative;z-index:1;pointer-events:none}.eyebrow{font-size:9px;letter-spacing:3.2px;color:#b69a74;line-height:1.6}h1{font:400 26px/1.4 var(--serif);display:flex;align-items:center;justify-content:center;gap:24px;letter-spacing:8px;color:#e3cda6;margin:10px 0 7px;padding-left:8px}.title-rule{height:1px;width:35px;background:linear-gradient(90deg,transparent,#9f8256)}.title-rule:last-child{transform:rotate(180deg)}.hero-heading>p{margin:0;color:#898278;font-size:11px;letter-spacing:3px;height:18px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stage-section{position:relative;width:100%;height:clamp(340px,45vh,470px);min-height:340px;flex-grow:1}.scene-wrap{height:100%;width:min(760px,75vw);position:relative;margin:0 auto}.scene-wrap canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .7s;pointer-events:none}html[data-renderer=webgl] .scene-wrap canvas{opacity:1}.pedestal-caption{position:absolute;bottom:12%;left:0;width:100%;text-align:center;color:#a48a60;font:8px/1 var(--serif);letter-spacing:3.1px;pointer-events:none}.story-note{position:absolute;top:29%;left:2.5%;z-index:2}.tiny-label{display:block;font-size:9px;letter-spacing:2.4px;color:#aa9477}.story-note p{font:400 19px/1.9 var(--serif);letter-spacing:4px;color:#c1b29a;margin:16px 0 20px}.small-rule{display:block;width:26px;height:1px;background:#ad8e5f;margin-bottom:20px}.story-english{font-size:8px;line-height:1.9;letter-spacing:2px;color:#7f7667}.power-hud{position:absolute;right:8%;top:48%;width:100px;z-index:2;font-variant-numeric:tabular-nums}.power-hud>div:first-of-type{font:400 39px/1.35 var(--serif);color:#ecd5ae;margin:3px 0 10px}.power-hud .percent{font:12px var(--sans);margin-left:6px;color:#bfa682}.power-ticks{display:flex;gap:4px;height:11px}.power-ticks i{height:8px;width:2px;background:#594a36;transition:background .15s,box-shadow .15s}.power-ticks i:nth-child(5n + 1){height:11px}.power-ticks i.on{background:#edcb94;box-shadow:0 0 6px #c49b5377}.power-state{display:block;color:#8e8171;font-size:9px;letter-spacing:1px;margin-top:10px}.signature{position:absolute;right:9.5%;top:8%;font:italic 29px/1.2 'Brush Script MT','Segoe Script','URW Chancery L',cursive;color:#b39a73;transform:rotate(-14deg);opacity:.8}.signature span{display:block;padding-left:30px}.signature i{display:block;width:105px;height:1px;background:linear-gradient(90deg,#a88b5a,transparent);transform:rotate(6deg);margin:6px 0 0 8px}.stage-index{position:absolute;left:2.5%;bottom:13%;display:flex;gap:25px;font-size:8px;letter-spacing:2px;color:#645d53}.stage-index>span:first-child{color:#a58b69}.interaction-zone{position:relative;text-align:center;padding:0 0 25px;margin-top:-11px;z-index:3}.result-line{min-height:35px;display:flex;gap:9px;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px;color:#a49a8c;margin-bottom:7px;transition:color .3s}.status-dot{width:4px;height:4px;border-radius:50%;background:#b69a6d;box-shadow:0 0 8px #bd925340}.result-line.revealed{color:#eed0a0;font-size:14px}.result-line.revealed .status-dot{height:5px;width:5px;background:#f5d298;box-shadow:0 0 10px #c89d70}.charge-button{position:relative;display:block;width:136px;height:136px;margin:0 auto;border-radius:50%;background:transparent;padding:0;isolation:isolate;touch-action:none;-webkit-touch-callout:none;transition:transform .25s;outline-offset:10px!important}.charge-button:hover:not(:disabled){transform:translateY(-2px)}.charge-button:active:not(:disabled),.experience[data-state=charging] .charge-button{transform:scale(.97)}.charge-aura{position:absolute;inset:-38px;border-radius:50%;background:radial-gradient(circle,transparent 42%,#e8b86b1a 49%,transparent 65%);opacity:calc(.35 + var(--power)*.65);filter:blur(8px);transition:opacity .25s;pointer-events:none}.charge-bezel{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 220deg,#302a21,#7b6340 18%,#3e3527 29%,#171818 39%,#b0915e 59%,#302a21 84%);border:1px solid #ad8b533b;box-shadow:0 4px 22px #000a,0 0 0 8px #b3925220,0 0 0 9px #bfa27510,0 0 0 17px #71553509,inset 0 1px 1px #fff2}.charge-center{position:absolute;inset:13px;border-radius:50%;display:flex;align-items:center;flex-direction:column;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 24% 10%,#7460445a,transparent 60%),repeating-radial-gradient(circle at center,#0000 0px,#0000 1px,#b6976413 1.6px,#0000 2.2px),linear-gradient(130deg,#37342d 0%,#151616 51%,#0a0b0b 100%);border:1px solid #dcc09660;box-shadow:inset 0 1px 4px #ffe4b64a,0 0 12px #000a}.charge-center strong{font:500 19px/1.5 var(--sans);color:#f0d7ad;letter-spacing:2px;margin-top:7px}.charge-center>span{color:#a49b8f;font-size:10px;letter-spacing:2px;margin-top:5px}.charge-center>i{width:14px;height:2px;background:#9a805940;display:block;margin-top:10px}.charge-center .touch-icon{height:20px;width:20px;color:#b6a07c;stroke-width:1}.charge-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible;pointer-events:none}.ring-track{fill:none;stroke:#a68b5740;stroke-width:2}.ring-progress{fill:none;stroke:#f3d5a0;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 4px #e8b96588);transition:stroke-dashoffset .05s linear}.experience[data-state=charging] .charge-center{box-shadow:inset 0 1px 5px #ffe4b65c,0 0 calc(8px + var(--power)*24px) #d3a05236}.experience[data-state=tossing] .charge-ring,.experience[data-state=settling] .charge-ring{animation:orbit 2.4s linear infinite}.experience[data-state=tossing] .ring-progress,.experience[data-state=settling] .ring-progress{stroke-dashoffset:420!important}.input-hint{display:flex;justify-content:center;align-items:center;gap:15px;color:#9d9588;font-size:10px;letter-spacing:2px;margin:28px 0 13px}.input-hint i{display:block;width:2px;height:2px;border-radius:50%;background:#a18865}.probability-note{display:flex;justify-content:center;align-items:center;gap:8px;height:16px;line-height:16px;font-size:10px;color:#9d8b71;letter-spacing:1px}.probability-note .icon{height:12px;width:12px;color:#c4a97c;stroke-width:1}.probability-note .probability{font-size:9px;letter-spacing:0;color:#676259;margin-left:1px}.probability-note .split{width:1px;height:9px;background:#b398632b;margin:0 10px}.footer{display:flex;align-items:center;justify-content:space-between;min-height:67px;border-top:1px solid var(--line);flex-shrink:0;gap:20px}.footer-sound{background:transparent;display:flex;align-items:center;gap:9px;color:#958571;font-size:10px;letter-spacing:1px;padding:8px 0}.footer-sound .icon{height:16px;width:16px}.footer-motto{font-size:8px;letter-spacing:2.2px;color:#7d7366}.keyboard-hint{font-size:9px;letter-spacing:1px;color:#6f685e;display:flex;gap:9px;align-items:center}kbd{font:8px var(--sans);border:1px solid #504735;border-radius:3px;padding:1px 5px;color:#a28d6d}.renderer-badge{position:absolute;bottom:76px;right:64px;color:#686459;font-size:8px;display:flex;gap:6px;align-items:center;letter-spacing:.8px}.renderer-badge>span:first-child{height:3px;width:3px;border-radius:50%;background:#a29472}.renderer-badge button{color:#bca479;background:transparent;font-size:9px;border-bottom:1px solid #6d593c;padding:0}.toast{position:fixed;bottom:max(40px,env(safe-area-inset-bottom));left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#23201bef;border:1px solid #69523370;color:#e7cfa7;font-size:12px;letter-spacing:.5px;padding:12px 21px;border-radius:8px;box-shadow:0 10px 35px #0007;z-index:50;transition:transform .25s,opacity .25s;max-width:calc(100vw - 35px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+/* Asset-free graceful 2D fallback. This mode is explicitly labelled in the UI. */
+.fallback-scene{position:absolute;inset:0;perspective:1000px;transition:opacity .5s}.fallback-aura{position:absolute;width:88%;height:95%;left:6%;top:0;background:radial-gradient(ellipse,#bb8c3e1d,transparent 65%)}.fallback-coin{position:absolute;left:50%;top:40%;width:clamp(165px,24vw,250px);aspect-ratio:1;transform-style:preserve-3d;will-change:transform}.fallback-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;filter:drop-shadow(8px 14px 10px #0007)}.fallback-face svg{width:100%;height:100%;display:block}.fallback-face.front{transform:translateZ(5px);box-shadow:-5px 0 0 #ad8650,-8px 0 0 #8d693c,-10px 0 0 #b4935b}.fallback-face.back{transform:rotateY(180deg) translateZ(5px)}.fallback-pedestal{position:absolute;left:50%;transform:translateX(-50%);bottom:11%;width:min(52%,325px);height:13%;border-radius:50%;background:radial-gradient(ellipse at 50% 20%,#363229 0%,#1e1d19 45%,#101110 68%);box-shadow:0 9px 0 -1px #181817,0 12px 0 -2px #0d0e0d,0 18px 14px #0009,inset 0 0 0 1px #9a855638,inset 0 2px 7px #a9977826}.pedestal-light{position:absolute;inset:15% 8%;border:2px solid #d5b684bd;border-radius:50%;box-shadow:0 0 8px #e7bc6740,inset 0 0 7px #e7bc6740}.pedestal-light:after{content:'';position:absolute;inset:12% 9%;border:1px solid #91703c66;border-radius:50%}.fallback-orbit{position:absolute;left:50%;top:39%;width:248px;height:248px;border:1px solid #c1a27320;border-radius:50%;transform:translate(-50%,-50%) rotateY(32deg) rotateZ(-20deg)}.fallback-dust{position:absolute;inset:0;pointer-events:none}.fallback-dust i{position:absolute;display:block;width:2px;height:2px;border-radius:50%;background:#e1b774;opacity:.4;box-shadow:0 0 4px #eac17a66;animation:dust-drift var(--dur,7s) ease-in-out infinite alternate}.fallback-dust i:nth-child(3n){width:1px;height:1px;opacity:.25}.fallback-dust i:nth-child(9n){width:3px;height:3px;opacity:.65;filter:blur(.6px)}
+/* Native dialogs provide focus trapping, keyboard dismissal and inert background. */
+.sheet-dialog{position:fixed;inset:0 0 0 auto;margin:0;width:440px;max-width:100vw;height:100dvh;max-height:100dvh;padding:0;border:0;border-left:1px solid #aa895036;background:linear-gradient(145deg,#1a1915,#0e1010 65%);color:var(--text);box-shadow:-30px 0 100px #0008;overflow:auto}.sheet-dialog::backdrop{background:#000a;backdrop-filter:blur(7px)}.sheet-dialog[open]{animation:slide-in .28s ease-out}.sheet-inner{padding:36px 30px max(30px,env(safe-area-inset-bottom));min-height:100%;display:flex;flex-direction:column}.sheet-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.sheet-header h2{font:400 27px var(--serif);letter-spacing:3px;margin:13px 0 0;color:#e8cea5}.sheet-header .eyebrow{font-size:8px;letter-spacing:2.4px}.icon-button{height:34px;width:34px;display:grid;place-items:center;background:transparent;color:#b49e7b;border:1px solid var(--line);border-radius:50%}.icon-button:hover{background:#b0905015}.sheet-description{font-size:11px;line-height:1.9;color:#8f897d;margin:23px 0}.stats{display:grid;grid-template-columns:1fr 1fr 1fr;border-block:1px solid var(--line);padding:20px 0;margin:1px 0 20px;gap:10px}.stats>div{display:flex;flex-direction:column;gap:6px}.stats span{font-size:9px;letter-spacing:1px;color:#9c8d76}.stats strong{font:30px var(--serif);font-variant-numeric:tabular-nums;color:#ddc297}.history-list{flex:1}.history-empty{text-align:center;color:#a79a83;padding:60px 0;line-height:2.4;font-size:12px}.history-empty .icon{height:38px;width:38px;display:block;margin:0 auto 18px;color:#b09565;stroke-width:.7}.history-item{padding:16px 0;display:flex;align-items:center;border-bottom:1px solid #a58c6817;gap:14px}.history-symbol{width:38px;height:38px;border:1px solid #b5915540;display:grid;place-items:center;border-radius:50%;background:radial-gradient(ellipse at 25% 10%,#8b6b352b,#171713);color:#dfbc84}.history-symbol .icon{width:21px;height:21px;stroke-width:1}.history-detail{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}.history-detail strong{font-size:12px;font-weight:400;letter-spacing:1px;overflow-wrap:anywhere;color:#ddc7a4}.history-detail span{font-size:9px;color:#847b6e;font-variant-numeric:tabular-nums}.history-power{font:20px var(--serif);color:#b49b71}.history-power small{font:9px var(--sans);margin-left:2px}.sheet-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:25px}.storage-note{font-size:9px;color:#726b5f}.subtle-button{background:transparent;color:#b49e7e;font-size:10px;padding:7px 0;letter-spacing:1px}.subtle-button:hover{color:#f0d3a2}.clear-confirm{margin-top:15px;border:1px solid #b4997040;background:#9a79441a;padding:13px 16px;border-radius:6px}.clear-confirm p{font-size:11px;margin:0 0 10px;color:#c6b799}.clear-confirm>div{display:flex;justify-content:flex-end;gap:20px}.gold-button{display:flex;align-items:center;justify-content:center;gap:20px;padding:11px 20px;color:#1d1a14;background:linear-gradient(120deg,#dfc392,#b59a6c);border:1px solid #e3c7937a;border-radius:5px;font-size:12px;letter-spacing:1px}.gold-button:hover{filter:brightness(1.08)}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:19px 0;border-bottom:1px solid var(--line)}.setting-row label{font-size:12px;color:#dbcaaf;cursor:pointer;letter-spacing:1px}.setting-row p{margin:6px 0 0;font-size:10px;color:#8c8170}.switch{appearance:none;-webkit-appearance:none;position:relative;width:36px;min-width:36px;height:21px;border-radius:20px;background:#33312b;border:1px solid #65563d;cursor:pointer;transition:background .2s}.switch:after{content:'';position:absolute;left:3px;top:3px;width:13px;height:13px;background:#a6967b;border-radius:50%;transition:transform .2s,background .2s}.switch:checked{background:#ab8b58;border-color:#bb9a62}.switch:checked:after{transform:translateX(15px);background:#f3dfb6}.setting-row select{background:#23221c;color:#d6ba8b;border:1px solid #7f694140;border-radius:4px;padding:6px 8px;font-size:10px;width:72px}.choice-settings{margin-top:30px}.choice-settings>.tiny-label{font-size:8px;letter-spacing:2px}.choice-settings h3{font-size:14px;letter-spacing:1px;font-weight:400;color:#d9c29e;margin:10px 0}.choice-settings p{font-size:10px;line-height:1.8;color:#90816b;margin:0 0 20px}.choice-fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.choice-fields label span{font-size:9px;color:#ac9773;letter-spacing:1px}.choice-fields input{margin-top:9px;width:100%;background:#090b0a;border:1px solid #b1905938;border-radius:5px;padding:11px 10px;font-size:12px;color:#e3c899}.choice-fields input::placeholder{color:#746550}.save-choices{margin-top:17px;width:100%}.save-choices .icon{width:16px;height:16px}.fairness-note{margin-top:auto;padding-top:36px;display:flex;gap:11px;align-items:flex-start}.fairness-note .icon{width:15px;height:15px;color:#a88d62;stroke-width:1;margin-top:2px}.fairness-note p{margin:0;color:#897d67;font-size:10px;line-height:1.9}.noscript{position:fixed;inset:35% 10%;padding:40px;background:#151612;border:1px solid var(--gold);z-index:100;text-align:center}
+@keyframes orbit{to{transform:rotate(270deg)}}@keyframes dust-drift{to{transform:translate3d(9px,-18px,0);opacity:.1}}@keyframes slide-in{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+@media(min-width:1450px){.stage-section{max-height:520px}.hero-heading{margin-top:40px}.charge-button{width:154px;height:154px}.interaction-zone{padding-bottom:31px}.charge-center strong{font-size:21px}.experience{min-height:100svh}.story-note{left:4%}.power-hud{right:11%}}
+@media(max-width:1100px){.experience{padding:0 35px}.story-note{left:0}.story-note p{font-size:15px;letter-spacing:2px}.story-note>.tiny-label{font-size:7px}.power-hud{right:1%;width:90px}.signature{right:3%}.scene-wrap{width:74vw}.stage-index{left:0;gap:15px}.wordmark-note{font-size:8px}.renderer-badge{right:35px}.footer-motto{font-size:7px}}
+@media(max-width:700px){.experience{padding:0 23px;min-height:100svh}.topbar{height:77px;padding-top:env(safe-area-inset-top)}.wordmark{gap:10px}.wordmark>span:first-of-type{font-size:22px;letter-spacing:5px}.wordmark>.icon{width:21px;height:21px}.wordmark-divider,.wordmark-note{display:none}.header-actions{gap:21px}.text-button{gap:6px;font-size:10px;letter-spacing:1px}.text-button>.icon{width:17px;height:17px}.history-count{display:none}.hero-heading{margin-top:28px}.hero-heading>.eyebrow{font-size:7px;letter-spacing:2.2px}h1{font-size:24px;letter-spacing:7px;gap:15px;margin-top:11px}.title-rule{width:25px}.hero-heading>p{font-size:10px;letter-spacing:2px}.stage-section{height:clamp(310px,42svh,440px);min-height:310px;flex-grow:1;margin-top:7px}.scene-wrap{width:calc(100% + 46px);margin-left:-23px}.story-note{top:14px;left:0}.story-note>.tiny-label,.story-english,.small-rule{display:none}.story-note p{font:10px/2 var(--serif);letter-spacing:2px;color:#aea18b;margin:12px 0}.signature{top:12px;right:9px;font-size:23px;opacity:.65}.signature span{padding-left:19px}.signature i{width:76px}.power-hud{right:-2px;top:44%;width:49px}.power-hud .tiny-label{font-size:7px;letter-spacing:1.4px}.power-hud>div:first-of-type{font-size:26px;margin:2px 0 8px}.power-hud .percent{font-size:8px;margin-left:3px}.power-ticks{gap:3px}.power-ticks i{width:1px}.power-state{font-size:7px;letter-spacing:0;white-space:nowrap;margin-top:8px}.stage-index{display:none}.pedestal-caption{bottom:12%;font-size:6px;letter-spacing:2px}.interaction-zone{margin-top:-3px;padding-bottom:25px}.result-line{font-size:10px;letter-spacing:1.5px;margin-bottom:9px;min-height:30px}.charge-button{width:128px;height:128px}.charge-center{inset:12px}.charge-center strong{font-size:18px;margin-top:6px}.charge-center>span{font-size:9px;margin-top:5px}.charge-center .touch-icon{height:18px;width:18px}.input-hint{font-size:10px;gap:14px;margin:25px 0 12px}.probability-note{font-size:9px;gap:6px}.probability-note .probability{font-size:8px}.footer{min-height:63px;gap:9px;padding-bottom:env(safe-area-inset-bottom)}.footer-motto{font-size:6px;letter-spacing:1.3px;max-width:190px;text-align:right}.footer-sound{font-size:9px;letter-spacing:0;gap:7px}.footer-sound .icon{width:14px;height:14px}.keyboard-hint{display:none}.renderer-badge{bottom:73px;right:23px;font-size:7px;letter-spacing:0}.renderer-badge>span:first-child{height:2px;width:2px}.fallback-coin{width:59%;max-width:235px;top:41%}.fallback-pedestal{width:64%;height:13%;bottom:12%}.fallback-orbit{width:216px;height:216px;top:39%}.sheet-dialog{inset:auto 0 0;margin:0;width:100%;height:auto;max-height:92dvh;border-radius:20px 20px 0 0;border:1px solid #a88c4e33}.sheet-inner{padding:30px 24px max(27px,env(safe-area-inset-bottom))}.sheet-dialog[open]{animation:slide-in .25s ease-out}.sheet-header h2{font-size:25px}.history-list{max-height:41dvh;overflow:auto}.setting-row{padding:15px 0}.choice-settings{margin-top:25px}.sheet-description{margin:18px 0}.fairness-note{padding-top:24px}.toast{font-size:11px;bottom:25px}}
+@media(max-width:700px) and (max-height:780px){.topbar{height:65px}.hero-heading{margin-top:19px}.stage-section{height:285px;min-height:285px}.charge-button{width:114px;height:114px}.charge-center strong{font-size:16px}.charge-center .touch-icon{width:15px;height:15px}.charge-center>i{margin-top:7px}.interaction-zone{padding-bottom:20px;margin-top:-14px}.input-hint{margin-top:21px;margin-bottom:9px}.footer{min-height:55px}.renderer-badge{bottom:63px}.fallback-coin{width:56%;max-width:200px}.result-line{margin-bottom:8px}.pedestal-caption{bottom:10%}}
+@media(max-width:360px){.experience{padding:0 18px}.scene-wrap{width:calc(100% + 36px);margin-left:-18px}.power-hud{right:-3px}.story-note p{font-size:9px}.header-actions{gap:16px}.signature{font-size:20px}.footer-motto{letter-spacing:.7px}.probability-note{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+html[data-reduced-motion=true] *,html[data-reduced-motion=true] *:before,html[data-reduced-motion=true] *:after{animation:none!important;transition:none!important}
+
+/* Fit typical app viewports; retain vertical scrolling on very short screens. */
+.experience{height:100svh;min-height:820px}
+@media(max-width:700px){.experience{height:100svh;min-height:740px}.story-note{display:none}}
+@media(max-width:700px) and (max-height:780px){.experience{min-height:710px}.stage-section{min-height:250px}}
+
+/* V2: a compact collector's tray, shared coin/die stage and deliberate touch input. */
+.collection-controls{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:12px;margin:18px auto 0;flex-shrink:0;width:min(520px,100%)}
+.mode-toggle{display:flex;padding:4px;border:1px solid #c4a36f29;border-radius:36px;background:#111312d9;box-shadow:0 4px 22px #0005}
+.mode-toggle button{display:flex;align-items:center;justify-content:center;gap:8px;min-width:151px;padding:9px 15px;border-radius:26px;background:transparent;color:#918a7d;font-size:12px;transition:background .25s,color .25s,box-shadow .25s}
+.mode-toggle .icon{width:16px;height:16px}.mode-toggle button>span{font-size:8px;letter-spacing:1.5px;opacity:.65}
+.mode-toggle button[aria-pressed=true]{background:linear-gradient(130deg,#5d4b30,#30291f);color:#f5dcaf;box-shadow:inset 0 1px #f6dca538,0 2px 10px #0005}
+.style-options{display:flex;gap:9px;justify-content:center;width:100%}.style-choice{display:flex;align-items:center;justify-content:center;gap:6px;padding:7px 10px;border-radius:7px;background:#17181782;border:1px solid #ffffff09;color:#8f8a81;font-size:10px;white-space:nowrap;transition:all .25s}
+.style-choice>i{display:block;flex-shrink:0;width:15px;height:15px;border-radius:50%;background:linear-gradient(135deg,#ffffffc0,var(--swatch) 43%,#000a);box-shadow:inset 0 0 0 1px #ffffff45,0 1px 3px #0009}
+.style-choice[aria-pressed=true]{border-color:#d4b9836b;background:#332a1e8c;color:#e7d3b4}.style-choice:hover:not(:disabled){color:#fff0d4;border-color:#b6935966}
+.selection-note{font-size:8px;color:#706957}.dice-options{position:absolute;left:50%;top:100%;transform:translateX(-50%);width:min(360px,100%);text-align:center;z-index:8;padding-top:10px;pointer-events:auto}.face-options{display:flex;gap:6px;justify-content:center}
+.face-choice{background:#151715;border:1px solid #d1ae7425;border-radius:6px;color:#999083;min-width:38px;height:32px;font:11px Georgia,serif;transition:background .2s,border-color .2s}
+.face-choice[aria-pressed=true]{color:#f5ddb3;background:#59452c;border-color:#c7a570}.geometry-note{font-size:9px;color:#827766;letter-spacing:1px;margin:7px 0 0}
+.collection-controls button:disabled{opacity:.48;cursor:default}.scene-wrap{cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline-offset:-12px}.scene-wrap:focus:not(:focus-visible){outline:none}.scene-wrap[aria-disabled=true]{cursor:progress}
+.scene-wrap .fallback-scene{pointer-events:none}.scene-wrap:focus-visible{outline:1px dashed #b5946055;border-radius:18px}
+.dice-probability{height:16px;line-height:16px;font-size:10px;letter-spacing:1.1px;color:#a38e6f}.stats{grid-template-columns:repeat(4,1fr)!important}.stats>div>span{font-size:9px!important}.stats strong{font-size:23px!important}
+.fallback-die{position:absolute;top:41%;left:50%;width:66%;max-width:305px;aspect-ratio:1;filter:drop-shadow(10px 16px 14px #0009);will-change:transform}
+.fallback-die>svg{width:100%;height:100%;overflow:visible}
+.fallback-scene[data-skin=silver] .fallback-coin{filter:grayscale(1) brightness(1.12)}
+.fallback-scene[data-skin=rose] .fallback-coin{filter:hue-rotate(325deg) saturate(.8)}
+.fallback-scene[data-skin=obsidian] .fallback-face{filter:brightness(.46) contrast(1.65) saturate(.65)}
+.fallback-scene[data-skin=obsidian] .fallback-coin{box-shadow:4px 6px 0 #b79b68,9px 12px 20px #000b}
+.experience{height:100svh;min-height:900px}.topbar{height:78px}.hero-heading{margin-top:22px}.stage-section{height:clamp(280px,36vh,440px);min-height:280px}.interaction-zone{padding-bottom:21px;margin-top:-3px}.charge-button{width:126px;height:126px}.charge-center strong{font-size:18px}.charge-center>span{font-size:8px;letter-spacing:.5px}.input-hint{margin-top:23px;margin-bottom:10px}.footer{min-height:56px}
+@media(min-width:1100px){.collection-controls{margin-top:19px}.stage-section{min-height:280px}.story-note{top:21%}.signature{top:6%}.power-hud{top:43%}.charge-button{width:126px;height:126px}.hero-heading h1{font-size:25px}.renderer-badge{bottom:64px}}
+@media(max-width:700px){
+  .experience{height:100svh;min-height:790px;padding-inline:22px}.topbar{height:61px}.hero-heading{margin-top:18px}.hero-heading h1{font-size:22px;margin:8px 0 5px;gap:14px}.hero-heading>p{font-size:9px;height:15px;line-height:15px;letter-spacing:2px}.hero-heading>.eyebrow{font-size:6px;letter-spacing:2.4px}
+  .collection-controls{margin-top:14px;gap:9px}.mode-toggle{padding:3px}.mode-toggle button{min-width:130px;padding:7px 11px;font-size:11px}.mode-toggle .icon{width:14px;height:14px}.mode-toggle button>span{font-size:7px}
+  .style-options{gap:5px}.style-choice{font-size:9px;padding:6px 7px;gap:5px}.style-choice>i{width:12px;height:12px}
+  .dice-options{width:min(310px,calc(100% - 20px));padding-top:8px}.face-options{gap:4px}.face-choice{min-width:0;flex:1;height:28px;font-size:10px}.geometry-note{font-size:8px;letter-spacing:.4px;margin-top:5px}
+  .stage-section{height:clamp(220px,31svh,340px);min-height:220px;margin-top:4px}.scene-wrap{width:calc(100% + 44px);margin-left:-22px}.signature{font-size:21px;top:4px;right:6px}.power-hud{right:-5px;top:40%;width:45px}.power-hud>div:first-of-type{font-size:24px}.power-state{font-size:6px}
+  .interaction-zone{margin-top:-3px;padding-bottom:19px}.result-line{min-height:28px;margin-bottom:7px;font-size:9px}.result-line.revealed{font-size:14px}.charge-button{width:112px;height:112px}.charge-center{inset:11px}.charge-center strong{font-size:16px;letter-spacing:1px}.charge-center>.touch-icon{height:15px;width:15px}.charge-center>span{font-size:7px;letter-spacing:0}.charge-center>i{margin-top:8px}
+  .input-hint{font-size:9px;letter-spacing:1px;margin:20px 0 10px;gap:10px}.probability-note,.dice-probability{font-size:9px;letter-spacing:.6px}.footer{min-height:48px}.footer-motto{font-size:5px;letter-spacing:1.1px}.renderer-badge{bottom:56px;right:22px;font-size:6px}.fallback-coin{max-width:212px;width:56%;top:41%}.fallback-die{max-width:243px;width:63%}.fallback-orbit{width:202px;height:202px}.pedestal-caption{font-size:5px;letter-spacing:1.6px;bottom:11%}
+}
+@media(max-width:370px){.experience{padding-inline:16px}.scene-wrap{margin-left:-16px;width:calc(100% + 32px)}.style-choice{font-size:8px;padding:6px}.mode-toggle button{min-width:122px}.face-options{gap:3px}.geometry-note{font-size:7px}.header-actions{gap:14px}}
+@media(max-width:700px) and (max-height:780px){.experience{min-height:790px}.hero-heading{margin-top:15px}.stage-section{min-height:220px}.charge-button{width:104px;height:104px}.charge-center strong{font-size:15px}}
+
+</style>
+</head>
+<body>
+<svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2Z"/><path d="m5 5 3 3m8 8 3 3M19 5l-3 3M8 16l-3 3"/></symbol>
+  <symbol id="i-dice" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Z M3 7l9 5 9-5M12 12v10"/><path d="M8 6.5h.01M16 15h.01M7 14h.01"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.1A8.8 8.8 0 0 1 9.9 3.5a9 9 0 1 0 10.6 10.6Z"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.6 7.3M3 4v7h7M12 7v5l3 2"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.3 3h5.4l.5 2.4 2.1 1.2 2.4-.8 2.7 4.5-1.9 1.8v2.4l1.9 1.8-2.7 4.5-2.4-.8-2.1 1.2-.5 2.4H9.3l-.5-2.4-2.1-1.2-2.4.8-2.7-4.5 1.9-1.8v-2.4l-1.9-1.8 2.7-4.5 2.4.8 2.1-1.2Z" transform="translate(1 0) scale(.92)"/><circle cx="12" cy="12" r="3.2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-audio" viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+  <symbol id="i-touch" viewBox="0 0 24 24"><path d="M8 12V5a2 2 0 0 1 4 0v6l1-1a2 2 0 0 1 3 1 2 2 0 0 1 3 2v3c0 4-2 6-6 6-2 0-3-1-4-2l-4-5a2 2 0 0 1 3-3Zm-3-7a5 5 0 0 1 10 0"/></symbol>
+</defs></svg>
+<div class="ambient" aria-hidden="true"><div class="light-beam beam-one"></div><div class="light-beam beam-two"></div><div class="ambient-orb"></div><div class="grain"></div></div>
+<main class="experience" id="experience" data-state="idle">
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="LUCK 首页"><svg class="icon"><use href="#i-star"/></svg><span>LUCK</span><span class="wordmark-divider"></span><span class="wordmark-note">THE ART OF POSSIBILITY</span></a>
+    <nav class="header-actions" aria-label="页面工具">
+      <button class="text-button" id="historyButton" aria-haspopup="dialog"><svg class="icon"><use href="#i-history"/></svg><span>历史</span><span class="history-count" id="historyCount">0</span></button>
+      <button class="text-button" id="settingsButton" aria-haspopup="dialog"><svg class="icon"><use href="#i-settings"/></svg><span>设置</span></button>
+    </nav>
+  </header>
+  <section class="hero-heading" aria-labelledby="pageTitle">
+    <div class="eyebrow" id="heroEyebrow">THE ART OF POSSIBILITY</div>
+    <h1 id="pageTitle"><span class="title-rule"></span><span id="heroTitle">抛 硬 币</span><span class="title-rule"></span></h1>
+    <p id="heroSubtitle">一枚硬币，两种可能。</p>
+  </section>
+  <section class="collection-controls" aria-label="选择道具与样式">
+    <div class="mode-toggle" role="group" aria-label="道具类型">
+      <button id="coinMode" data-mode="coin" aria-pressed="true"><svg class="icon"><use href="#i-star"/></svg>抛硬币 <span>COIN</span></button>
+      <button id="diceMode" data-mode="dice" aria-pressed="false"><svg class="icon"><use href="#i-dice"/></svg>掷骰子 <span>DICE</span></button>
+    </div>
+    <div class="style-options" id="styleOptions" role="group" aria-label="金属样式"></div>
+    <div class="dice-options" id="diceOptions" hidden>
+      <div class="face-options" id="faceOptions" role="group" aria-label="骰子面数，4 至 12 面"></div>
+      <p class="geometry-note" id="geometryNote"></p>
+    </div>
+  </section>
+  <section class="stage-section" aria-label="可交互的三维道具展示">
+    <aside class="story-note" aria-hidden="true"><span class="tiny-label">LET CHANCE BEGIN</span><p>每一次抛掷<br>都是另一种可能</p><span class="small-rule"></span><div class="story-english">SAME COIN.<br>DIFFERENT STORIES.</div></aside>
+    <div class="scene-wrap" id="sceneWrap" role="button" tabindex="0" aria-label="点击道具轻抛；按住蓄力，松手抛出" aria-describedby="inputHint">
+      <canvas id="coinCanvas" aria-hidden="true"></canvas>
+      <div class="fallback-scene" id="fallbackScene" aria-hidden="true">
+        <div class="fallback-aura"></div><div class="fallback-orbit"></div>
+        <div class="fallback-coin" id="fallbackCoin"><div class="fallback-face front" id="fallbackFront"></div><div class="fallback-face back" id="fallbackBack"></div></div>
+        <div class="fallback-pedestal"><div class="pedestal-light"></div></div>
+        <div class="fallback-dust" id="fallbackDust"></div>
+      </div>
+      <span class="pedestal-caption">GOOD CHOICES &nbsp; / &nbsp; BETTER DAYS</span>
+    </div>
+    <aside class="power-hud" aria-label="蓄力值"><span class="tiny-label">POWER</span><div><span id="powerValue">00</span><span class="percent">%</span></div><div class="power-ticks" id="powerTicks" aria-hidden="true"></div><span class="power-state" id="powerState">静待你的选择</span></aside>
+    <div class="signature" aria-hidden="true">Good <span>Luck.</span><i></i></div>
+    <div class="stage-index" aria-hidden="true"><span id="stageIndex">01 / 04</span><span>THE LUCK COLLECTION</span></div>
+  </section>
+  <section class="interaction-zone" aria-label="抛掷操作">
+    <div class="result-line" id="resultLine"><span class="status-dot"></span><span id="statusText">让答案，在空中揭晓</span></div>
+    <button class="charge-button" id="chargeButton" aria-label="点击轻抛，按住蓄力，松手抛出" aria-describedby="inputHint">
+      <span class="charge-aura"></span><span class="charge-bezel"></span>
+      <svg class="charge-ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-track" cx="100" cy="100" r="91"/><circle class="ring-progress" id="ringProgress" cx="100" cy="100" r="91" stroke-dasharray="571.77" stroke-dashoffset="571.77"/></svg>
+      <span class="charge-center"><svg class="icon touch-icon"><use href="#i-touch"/></svg><strong id="buttonTitle">点击轻抛</strong><span id="buttonSubtitle">长按蓄力 · 松手抛出</span><i></i></span>
+    </button>
+    <div id="chargeProgress" class="sr-only" role="progressbar" aria-label="蓄力" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+    <p class="input-hint" id="inputHint"><span>点一下轻抛</span><i></i><span>按住蓄力放大</span></p>
+    <div class="probability-note" id="coinProbability"><svg class="icon"><use href="#i-star"/></svg><span id="headsPreview">星芒</span><span class="probability">50%</span><span class="split"></span><svg class="icon"><use href="#i-moon"/></svg><span id="tailsPreview">月影</span><span class="probability">50%</span></div>
+    <div class="dice-probability" id="diceProbability" hidden></div>
+  </section>
+  <footer class="footer">
+    <button id="soundButton" class="footer-sound" aria-label="关闭音效" aria-pressed="true"><svg class="icon"><use href="#i-audio"/></svg><span id="soundLabel">音效已开启</span></button>
+    <span class="footer-motto">A LITTLE CHANCE. &nbsp; A LITTLE MAGIC.</span>
+    <span class="keyboard-hint"><kbd>SPACE</kbd> 按住空格也可以</span>
+  </footer>
+  <div class="renderer-badge" id="rendererBadge" role="status"><span></span><span id="rendererLabel">正在加载 3D</span><button id="retryRenderer" hidden>重试</button></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+<dialog id="historyDialog" class="sheet-dialog" aria-labelledby="historyTitle">
+  <div class="sheet-inner"><div class="sheet-header"><div><span class="eyebrow">YOUR LITTLE MOMENTS</span><h2 id="historyTitle">抛掷记录</h2></div><button class="icon-button close-dialog" aria-label="关闭历史"><svg class="icon"><use href="#i-close"/></svg></button></div>
+  <p class="sheet-description">每一次选择，都有迹可循。<br>仅保存在当前设备，展示最近 50 次。</p>
+  <div class="stats"><div><span>累计抛掷</span><strong id="totalStat">0</strong></div><div><span>硬币正面</span><strong id="headsStat">0</strong></div><div><span>硬币反面</span><strong id="tailsStat">0</strong></div><div><span>掷骰次数</span><strong id="diceStat">0</strong></div></div>
+  <div id="historyList" class="history-list"></div>
+  <div class="sheet-bottom"><span class="storage-note" id="storageNote">记录仅保存在本机</span><button id="clearHistory" class="subtle-button">清空记录</button></div>
+  <div id="clearConfirm" class="clear-confirm" hidden><p>同时清空最近记录和累计次数？此操作无法撤销。</p><div><button id="cancelClear" class="subtle-button">保留记录</button><button id="confirmClear" class="gold-button">确认清空</button></div></div>
+  </div>
+</dialog>
+<dialog id="settingsDialog" class="sheet-dialog" aria-labelledby="settingsTitle">
+  <div class="sheet-inner"><div class="sheet-header"><div><span class="eyebrow">MAKE IT YOURS</span><h2 id="settingsTitle">偏好设置</h2></div><button class="icon-button close-dialog" aria-label="关闭设置"><svg class="icon"><use href="#i-close"/></svg></button></div>
+  <p class="sheet-description">为你的每一次抛掷，增添一点仪式感。</p>
+  <div class="setting-row"><div><label for="soundSetting">沉浸音效</label><p>蓄力低鸣、划空与清脆回响</p></div><input class="switch" id="soundSetting" type="checkbox" checked></div>
+  <div class="setting-row"><div><label for="hapticsSetting">触感反馈</label><p>在支持震动的设备上轻触回应</p></div><input class="switch" id="hapticsSetting" type="checkbox" checked></div>
+  <div class="setting-row"><div><label for="motionSetting">减少动态效果</label><p>减少多圈旋转与放大幅度，保留结果反馈</p></div><input class="switch" id="motionSetting" type="checkbox"></div>
+  <div class="setting-row"><div><label for="qualitySetting">渲染画质</label><p>流畅模式减少粒子与像素密度</p></div><select id="qualitySetting"><option value="auto">均衡</option><option value="high">精细</option><option value="low">流畅</option></select></div>
+  <div class="choice-settings"><div class="tiny-label">TWO SIDES, YOUR CHOICE</div><h3>给硬币两面取个名字</h3><p>例如「去试试」与「再想想」，每面最多 10 个字。</p><div class="choice-fields"><label><span>✦ 正面 / HEADS</span><input id="headsInput" maxlength="10" placeholder="星芒" autocomplete="off"></label><label><span>☾ 反面 / TAILS</span><input id="tailsInput" maxlength="10" placeholder="月影" autocomplete="off"></label></div><button class="gold-button save-choices" id="saveChoices">保存选项 <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+  <div class="fairness-note"><svg class="icon"><use href="#i-star"/></svg><p>蓄力决定抛掷的姿态，不决定答案。<br>硬币与骰子结果均独立随机生成。<br>奇数面采用棱柱造型，不以物理落地判定结果。</p></div>
+  </div>
+</dialog>
+<noscript><div class="noscript">请在浏览器中启用 JavaScript 后体验抛硬币。</div></noscript>
+<script type="module">
+
+// ===== src/core/catalog.js =====
+/** Shared serializable product options. No browser or wx dependency. */
+const DICE_FACES = Object.freeze([4, 6, 8, 12]);
+const COIN_STYLES = Object.freeze([
+  { id: 'gold', name: '香槟金', english: 'CHAMPAGNE', color: '#e4bd7c', body: 0xdfb772, bright: 0xf5d79a, dark: 0x997543, face: 0xcaa36a, dice: 0x756045 },
+  { id: 'silver', name: '月光银', english: 'MOONLIGHT', color: '#cad7e2', body: 0xbfcbd5, bright: 0xf0f5fa, dark: 0x647582, face: 0xa5b4c1, dice: 0x4f6474 },
+  { id: 'rose', name: '玫瑰金', english: 'ROSE GOLD', color: '#dfaa9d', body: 0xd49b88, bright: 0xffd7c5, dark: 0x865f56, face: 0xb7887b, dice: 0x74544d },
+  { id: 'obsidian', name: '曜石黑金', english: 'OBSIDIAN', color: '#8b795a', body: 0x252b2e, bright: 0xe4c180, dark: 0x544b3c, face: 0x171d21, dice: 0x182025 }
+]);
+function getStyle(id) { return COIN_STYLES.find(style => style.id === id) || COIN_STYLES[0]; }
+function isDiceFaces(value) { return DICE_FACES.includes(value); }
+
+
+// ===== src/core/dice.js =====
+/**
+ * Regular-polyhedron dice used by the premium coin / dice studio.
+ * Within the 4–12 face range, only Platonic solids are kept:
+ * D4 tetrahedron, D6 cube, D8 octahedron and D12 dodecahedron.
+ * Pure arrays and vector math are shared with WebGL and the SVG fallback.
+ */
+const dvAdd = (a,b) => a.map((n,i) => n+b[i]);
+const dvSub = (a,b) => a.map((n,i) => n-b[i]);
+const dvMul = (a,k) => a.map(n => n*k);
+const dvDot = (a,b) => a.reduce((s,n,i) => s+n*b[i],0);
+const dvCross = (a,b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+const dvUnit = a => dvMul(a,1/Math.hypot(...a));
+const dvMean = points => dvMul(points.reduce(dvAdd,[0,0,0]),1/points.length);
+function diceHull(vertices) {
+  const planes = new Map(), eps = 1e-6;
+  for (let i=0;i<vertices.length-2;i++) for(let j=i+1;j<vertices.length-1;j++) for(let k=j+1;k<vertices.length;k++) {
+    let normal=dvCross(dvSub(vertices[j],vertices[i]),dvSub(vertices[k],vertices[i]));
+    if (Math.hypot(...normal)<eps) continue;
+    normal=dvUnit(normal); let distance=dvDot(normal,vertices[i]);
+    const signed=vertices.map(p=>dvDot(normal,p)-distance);
+    if (signed.some(n=>n>eps) && signed.some(n=>n<-eps)) continue;
+    if (signed.some(n=>n>eps)) {normal=dvMul(normal,-1);distance=-distance;}
+    const ids=vertices.map((p,id)=>Math.abs(dvDot(normal,p)-distance)<eps?id:-1).filter(id=>id>=0);
+    const key=ids.join(','); if(planes.has(key)) continue;
+    const center=dvMean(ids.map(id=>vertices[id]));
+    const up=Math.abs(normal[1])>.9?[0,0,-1]:[0,1,0];
+    const u=dvUnit(dvCross(up,normal)), v=dvCross(normal,u);
+    ids.sort((a,b)=>{
+      const pa=dvSub(vertices[a],center),pb=dvSub(vertices[b],center);
+      return Math.atan2(dvDot(pa,v),dvDot(pa,u))-Math.atan2(dvDot(pb,v),dvDot(pb,u));
+    });
+    let inradius=Infinity;
+    for(let t=0;t<ids.length;t++) {
+      const a=dvSub(vertices[ids[t]],center),b=dvSub(vertices[ids[(t+1)%ids.length]],center);
+      inradius=Math.min(inradius,Math.hypot(...dvCross(a,b))/Math.hypot(...dvSub(b,a)));
+    }
+    planes.set(key,{indices:ids,normal,center,u,v,inradius,distance});
+  }
+  return [...planes.values()];
+}
+const diceCache=new Map();
+const REGULAR_FACE_COUNTS = [4, 6, 8, 12];
+function makeDieSpec(count) {
+  if(!REGULAR_FACE_COUNTS.includes(count)) throw new RangeError('Only regular-polyhedron dice are supported: D4, D6, D8, D12');
+  if(diceCache.has(count)) return diceCache.get(count);
+  let vertices=[],kind='';
+  if(count===4){
+    vertices=[[1,1,1],[-1,-1,1],[-1,1,-1],[1,-1,-1]];
+    kind='正四面体';
+  } else if(count===6){
+    for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])vertices.push([x,y,z]);
+    kind='正六面体';
+  } else if(count===8){
+    vertices=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+    kind='正八面体';
+  } else if(count===12){
+    const phi=(1+Math.sqrt(5))/2;
+    for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])vertices.push([x,y,z]);
+    for(const a of [-1,1])for(const b of [-1,1])vertices.push([0,a/phi,b*phi],[a/phi,b*phi,0],[b*phi,0,a/phi]);
+    kind='正十二面体';
+  }
+  const radius=Math.max(...vertices.map(p=>Math.hypot(...p)));
+  vertices=vertices.map(p=>dvMul(p,1.18/radius));
+  const faces=diceHull(vertices);
+  faces.sort((a,b)=>(b.normal[2]-a.normal[2])||(b.normal[1]-a.normal[1])||(b.normal[0]-a.normal[0]));
+  faces.forEach((f,i)=>{f.value=i+1;});
+  if(faces.length!==count)throw new Error(`Invalid D${count} geometry: found ${faces.length} faces`);
+  const spec={count,kind,vertices,faces};diceCache.set(count,spec);return spec;
+}
+
+// Renderer-independent quaternion animation. Shared by actual WebGL and SVG fallback.
+const dqNorm=q=>{const length=Math.hypot(...q);return q.map(v=>v/length);};
+const dqMul=(a,b)=>[a[3]*b[0]+a[0]*b[3]+a[1]*b[2]-a[2]*b[1],a[3]*b[1]-a[0]*b[2]+a[1]*b[3]+a[2]*b[0],a[3]*b[2]+a[0]*b[1]-a[1]*b[0]+a[2]*b[3],a[3]*b[3]-a[0]*b[0]-a[1]*b[1]-a[2]*b[2]];
+const dqAxis=(axis,angle)=>[...dvMul(axis,Math.sin(angle/2)),Math.cos(angle/2)];
+const dqEuler=(x,y,z)=>dqMul(dqMul(dqAxis([0,0,1],z),dqAxis([0,1,0],y)),dqAxis([1,0,0],x));
+function rotateDiceVector(p,q){const u=q.slice(0,3),t=dvMul(dvCross(u,p),2);return dvAdd(p,dvAdd(dvMul(t,q[3]),dvCross(u,t)));}
+function dqSlerp(a,b,t){
+  let dot=a.reduce((s,v,i)=>s+v*b[i],0);if(dot<0){b=b.map(v=>-v);dot=-dot;}
+  if(dot>.9995)return dqNorm(a.map((v,i)=>v+(b[i]-v)*t));
+  const angle=Math.acos(Math.max(-1,Math.min(1,dot))),denom=Math.sin(angle);
+  return a.map((v,i)=>(v*Math.sin((1-t)*angle)+b[i]*Math.sin(t*angle))/denom);
+}
+function diceFrameQuaternion(face){
+  // Columns u,v,n transform label coordinates into object coordinates.
+  const [u,v,n]=[face.u,face.v,face.normal],m00=u[0],m01=v[0],m02=n[0],m10=u[1],m11=v[1],m12=n[1],m20=u[2],m21=v[2],m22=n[2];
+  const trace=m00+m11+m22;let q,s;
+  if(trace>0){s=2*Math.sqrt(trace+1);q=[(m21-m12)/s,(m02-m20)/s,(m10-m01)/s,s/4];}
+  else if(m00>m11&&m00>m22){s=2*Math.sqrt(1+m00-m11-m22);q=[s/4,(m01+m10)/s,(m02+m20)/s,(m21-m12)/s];}
+  else if(m11>m22){s=2*Math.sqrt(1+m11-m00-m22);q=[(m01+m10)/s,s/4,(m12+m21)/s,(m02-m20)/s];}
+  else{s=2*Math.sqrt(1+m22-m00-m11);q=[(m02+m20)/s,(m12+m21)/s,s/4,(m10-m01)/s];}
+  return dqNorm([-q[0],-q[1],-q[2],q[3]]); // Inverse: face normal -> +Z, label up -> +Y.
+}
+function createDieMotion(){
+  let key='',current=[0,0,0,1],start=current,target=current,lastThrow=-1;
+  return {
+    update(state,spec){
+      const faceQ=value=>dqMul(dqEuler(-.20,.28,-.065),diceFrameQuaternion(spec.faces[Math.max(0,Math.min(spec.count-1,value-1))]));
+      if(key!==`${state.mode}:${spec.count}`){key=`${state.mode}:${spec.count}`;current=faceQ(state.value||1);lastThrow=-1;}
+      const active=state.state==='tossing'||state.state==='settling';
+      if(active){
+        if(lastThrow!==state.throwId){lastThrow=state.throwId;start=current.slice();target=faceQ(Number(state.target)||1);}
+        const p=state.progress,smooth=p*p*(3-2*p);
+        if(state.reducedMotion)current=dqSlerp(start,target,smooth);
+        else{
+          const turn=1-Math.pow(1-p,2.2),rot=dqEuler(state.turns*Math.PI*2*turn,Math.PI*4*turn,Math.sin(p*Math.PI)*.5);
+          current=dqMul(rot,dqSlerp(start,target,smooth));
+        }
+      }else{
+        current=faceQ(state.value||1);
+        const drift=state.reducedMotion?0:Math.sin(state.time*.65)*.025;
+        current=dqMul(dqEuler(drift,drift,drift*.5),current);
+      }
+      return current.slice();
+    }
+  };
+}
+
+
+// ===== src/core/game.js =====
+
+/** Platform-neutral state machine. The host owns input, clock, storage and rendering. */
+const DEFAULT_CONFIG = Object.freeze({ chargeMs: 1800, tapThresholdMs: 220, quickPower: .28, maxGrowth: .26, historyLimit: 50 });
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = t => t*t*(3-2*t);
+const TAU = Math.PI*2;
+class CoinGame {
+  constructor({random=Math.random,onEvent=()=>{},config={}}={}) {
+    this.random=random;this.onEvent=onEvent;this.config={...DEFAULT_CONFIG,...config};
+    if(!(this.config.chargeMs>0)||!(this.config.tapThresholdMs>=0))throw new Error('Invalid charge configuration');
+    this.state='idle';this.elapsed=0;this.idleTime=0;this.power=0;this.side='heads';this.value=1;
+    this.mode='coin';this.faces=6;this.style='gold';this.result=null;this.target=null;
+    this.reducedMotion=false;this.paused=false;this.disposed=false;this.previousState='idle';this.throwId=0;
+    this.returnScale=1;this.returnMs=300;this.launchScale=1;this.chargeBaseScale=1;this.quick=false;
+  }
+  emit(type,payload={}) {this.onEvent({type,...payload});}
+  setSelection(patch={}) {
+    if(this.disposed||!['idle','result'].includes(this.state))return false;
+    const next={mode:this.mode,faces:this.faces,style:this.style,...patch};
+    if(!['coin','dice'].includes(next.mode)||!isDiceFaces(next.faces)||!['gold','silver','rose','obsidian'].includes(next.style))return false;
+    const reset=next.mode!==this.mode||next.faces!==this.faces;
+    this.mode=next.mode;this.faces=next.faces;this.style=next.style;
+    if(reset){this.state='idle';this.power=0;this.value=1;this.side='heads';this.result=null;this.target=null;this.returnScale=1;}
+    this.emit('selection',{mode:this.mode,faces:this.faces,style:this.style});return true;
+  }
+  beginCharge() {
+    if(this.disposed||this.paused||!['idle','result'].includes(this.state))return false;
+    this.chargeBaseScale=this.snapshot().pose.scale;
+    this.previousState=this.state;this.previousPower=this.power;this.state='charging';this.elapsed=0;this.power=0;
+    this.emit('charge-start');return true;
+  }
+  cancelCharge() {
+    if(this.state!=='charging')return false;
+    this.returnScale=this.snapshot().pose.scale;this.returnMs=0;
+    this.state=this.previousState;this.power=this.previousState==='result'?this.previousPower:0;this.elapsed=0;
+    this.emit('charge-cancel');return true;
+  }
+  quickThrow() {if(!this.beginCharge())return false;return this.release();}
+  release() {
+    if(this.state!=='charging'||this.disposed||this.paused)return false;
+    let sample;
+    try{sample=this.random();}catch{sample=NaN;}
+    if(!Number.isFinite(sample)||sample<0||sample>=1){this.cancelCharge();this.emit('error',{message:'随机数不可用，请重试。'});return false;}
+    this.launchScale=this.snapshot().pose.scale;
+    this.quick=this.elapsed<this.config.tapThresholdMs;
+    if(this.quick)this.power=this.config.quickPower;
+    this.target=this.mode==='coin'?(sample<.5?'heads':'tails'):1+Math.floor(sample*this.faces);
+    this.state='tossing';this.elapsed=0;
+    this.duration=this.reducedMotion?700:this.quick?1350:1900+this.power*750;
+    this.startAngle=.12+(this.side==='tails'?Math.PI:0);
+    this.turns=this.quick?3:4+Math.round(this.power*5);
+    this.endAngle=this.startAngle+this.turns*TAU+(this.mode==='coin'&&this.target!==this.side?Math.PI:0);
+    this.throwId++;this.emit('throw',{power:this.power,id:this.throwId,quick:this.quick,mode:this.mode});return true;
+  }
+  setReducedMotion(value){this.reducedMotion=!!value;}
+  setPaused(value){if(value)this.cancelCharge();this.paused=!!value;}
+  tick(deltaMs) {
+    if(this.paused||this.disposed)return this.snapshot();
+    const dt=clamp(Number.isFinite(deltaMs)?deltaMs:0,0,100);this.idleTime+=dt;this.returnMs+=dt;
+    if(this.state==='charging'){
+      this.elapsed+=dt;const old=this.power;this.power=clamp(this.elapsed/this.config.chargeMs);
+      if(old<1&&this.power===1)this.emit('full-charge');
+    }else if(this.state==='tossing'||this.state==='settling'){
+      this.elapsed+=dt;
+      if(this.elapsed>=this.duration){
+        this.state='result';if(this.mode==='coin')this.side=this.target;else this.value=this.target;
+        this.result={id:this.throwId,mode:this.mode,faces:this.mode==='dice'?this.faces:2,style:this.style,side:this.mode==='coin'?this.side:null,value:this.mode==='dice'?this.value:null,power:this.power,turns:this.turns,quick:this.quick};
+        this.returnScale=1;this.emit('result',{result:{...this.result}});
+      }else if(this.elapsed/this.duration>=.8&&this.state!=='settling'){this.state='settling';this.emit('settle');}
+    }
+    return this.snapshot();
+  }
+  snapshot(){
+    const active=this.state==='tossing'||this.state==='settling',p=active?clamp(this.elapsed/this.duration):0,t=this.reducedMotion?0:this.idleTime/1000;
+    let x=.12+(this.side==='tails'?Math.PI:0),y=-.32+Math.sin(t*.55)*.045,z=-.24+Math.sin(t*.37)*.028,lift=.22+Math.sin(t*1.25)*.055;
+    let scale=lerp(this.returnScale,1,ease(clamp(this.returnMs/260)));
+    if(this.state==='charging'){
+      scale=lerp(this.chargeBaseScale,1+(this.reducedMotion?.055:this.config.maxGrowth),ease(this.power));
+      lift-=this.power*.09;x-=this.power*.10;z+=this.power*.09;
+      if(!this.reducedMotion){y+=Math.sin(t*45)*this.power*.005;lift+=Math.sin(t*42)*this.power*.004;}
+    }
+    if(active){
+      scale=lerp(this.launchScale,1,ease(clamp(p/.42)));
+      if(this.reducedMotion){x=p<.5?this.startAngle:.12+(this.target==='tails'?Math.PI:0);lift=.22;}
+      else{
+        const spin=1-Math.pow(1-p,2.2);x=lerp(this.startAngle,this.endAngle,spin);
+        y=-.32+Math.sin(p*TAU)*.35*(1-p);z=-.24+Math.sin(p*Math.PI)*.48;
+        const flight=Math.min(1,p/.8);lift=.22+(.55+.75*this.power)*4*flight*(1-flight);
+        if(p>.8)lift+=Math.sin((p-.8)*5*Math.PI)*.11*(1-p)/.2;
+      }
+    }
+    return {state:this.state,power:this.power,progress:p,time:t,paused:this.paused,mode:this.mode,faces:this.faces,style:this.style,value:this.value,target:this.target,throwId:this.throwId,turns:this.turns||0,quick:this.quick,side:this.side,result:this.state==='result'?this.result:null,reducedMotion:this.reducedMotion,pose:{x,y,z,lift,scale},energy:this.state==='charging'?this.power:active?Math.pow(1-p,2):0,burst:active?Math.max(0,1-p*4):0,zoom:active&&!this.reducedMotion?1-Math.sin(p*Math.PI)*.12:1};
+  }
+  dispose(){this.disposed=true;this.onEvent=()=>{};}
+}
+
+
+// ===== src/core/storage.js =====
+
+/** Keep the v1 key to migrate existing coin history in-place without losing it. */
+const STORAGE_KEY='luck-coin:v1';
+const DEFAULT_SETTINGS=Object.freeze({sound:true,haptics:true,reducedMotion:false,quality:'auto',headsLabel:'星芒',tailsLabel:'月影',mode:'coin',faces:6,style:'gold'});
+const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?Array.from(value.trim()).slice(0,10).join(''):fallback;
+function sanitizeSettings(value={}){
+  if(!value||typeof value!=='object')value={};
+  const out={...DEFAULT_SETTINGS};
+  for(const key of ['sound','haptics','reducedMotion'])if(typeof value[key]==='boolean')out[key]=value[key];
+  if(['auto','high','low'].includes(value.quality))out.quality=value.quality;
+  if(['coin','dice'].includes(value.mode))out.mode=value.mode;
+  if(DICE_FACES.includes(value.faces))out.faces=value.faces;
+  if(['gold','silver','rose','obsidian'].includes(value.style))out.style=value.style;
+  out.headsLabel=cleanLabel(value.headsLabel,out.headsLabel);out.tailsLabel=cleanLabel(value.tailsLabel,out.tailsLabel);return out;
+}
+function validRecord(r){
+  if(!r||!Number.isFinite(r.at)||!Number.isFinite(r.power))return false;
+  if(r.mode==='dice')return Number.isInteger(r.faces)&&r.faces>=4&&r.faces<=12&&Number.isInteger(r.value)&&r.value>=1&&r.value<=r.faces;
+  return (!r.mode||r.mode==='coin')&&['heads','tails'].includes(r.side);
+}
+function createStore(adapter){
+  let data={version:2,settings:{...DEFAULT_SETTINGS},history:[],totals:{heads:0,tails:0,dice:0}},persistent=true;
+  try{
+    const raw=adapter.get(STORAGE_KEY),parsed=typeof raw==='string'?(raw.trim()?JSON.parse(raw):null):raw;
+    if(parsed&&typeof parsed==='object'){
+      data.settings=sanitizeSettings(parsed.settings);
+      data.history=(Array.isArray(parsed.history)?parsed.history:[]).filter(validRecord).slice(0,50).map(r=>({...r,mode:r.mode==='dice'?'dice':'coin',power:Math.max(0,Math.min(1,r.power)),label:r.mode==='dice'?`${r.value} 点`:cleanLabel(r.label,r.side==='heads'?'星芒':'月影')}));
+      for(const key of ['heads','tails','dice']){const minimum=data.history.filter(r=>key==='dice'?r.mode==='dice':r.mode==='coin'&&r.side===key).length;const n=parsed.totals&&parsed.totals[key];data.totals[key]=Number.isSafeInteger(n)&&n>=minimum?n:minimum;}
+    }
+  }catch{persistent=false;}
+  function save(){try{adapter.set(STORAGE_KEY,JSON.stringify(data));persistent=true;}catch{persistent=false;}}
+  return {
+    get data(){return data;},get persistent(){return persistent;},
+    updateSettings(patch){data.settings=sanitizeSettings({...data.settings,...patch});save();return data.settings;},
+    add(result,at=Date.now()){
+      const dice=result.mode==='dice',label=dice?`${result.value} 点`:result.side==='heads'?data.settings.headsLabel:data.settings.tailsLabel;
+      const record={mode:dice?'dice':'coin',faces:dice?result.faces:2,value:dice?result.value:null,side:dice?null:result.side,power:Math.max(0,Math.min(1,result.power)),at,label,style:result.style||data.settings.style,quick:!!result.quick};
+      if(!validRecord(record))throw new TypeError('Invalid result record');
+      data.history.unshift(record);data.history=data.history.slice(0,50);data.totals[dice?'dice':record.side]++;save();return record;
+    },
+    clear(){data.history=[];data.totals={heads:0,tails:0,dice:0};save();}
+  };
+}
+
+
+// ===== src/core/scene.js =====
+
+
+/**
+ * Shared Three.js scene. Inject THREE and a canvas node from Web or WeChat.
+ * No document/window/wx usage, no images, loaders, fonts or remote 3D assets.
+ * Geometry, brushed-metal textures, lightbox reflections and particles are procedural.
+ */
+function createCoinScene({ THREE: T, canvas, width, height, pixelRatio = 1, quality = 'auto' }) {
+  if (!T || !canvas) throw new Error('THREE and a canvas are required');
+  const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance', stencil: false });
+  renderer.setClearColor(0x080909, 0);
+  if ('outputColorSpace' in renderer && T.SRGBColorSpace) renderer.outputColorSpace = T.SRGBColorSpace;
+  else if ('outputEncoding' in renderer) renderer.outputEncoding = T.sRGBEncoding;
+  renderer.toneMapping = T.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  const scene = new T.Scene();
+  const camera = new T.OrthographicCamera(-3, 3, 2.5, -2.5, 0.1, 60);
+  const baseCamera = { x: 0, y: 3.3, z: 12, lookX: 0, lookY: 0.15, lookZ: 0 };
+  camera.position.set(baseCamera.x, baseCamera.y, baseCamera.z);
+  camera.lookAt(baseCamera.lookX, baseCamera.lookY, baseCamera.lookZ);
+  const ownedTextures = new Set();
+  const ownedTargets = new Set();
+  let disposed = false, currentQuality = quality, dpr = 1;
+  const modern = parseInt(T.REVISION, 10) >= 155;
+  const Geo = (name, ...args) => new (T[name + 'BufferGeometry'] || T[name + 'Geometry'])(...args);
+  const attr = (g, name, array, n) => {
+    const a = new T.BufferAttribute(array, n);
+    if (g.setAttribute) g.setAttribute(name, a); else g.addAttribute(name, a);
+  };
+  const mesh = (geo, mat, parent = scene) => { const m = new T.Mesh(geo, mat); parent.add(m); return m; };
+  const standard = p => new T.MeshStandardMaterial(p);
+  const basic = p => new T.MeshBasicMaterial(p);
+
+  // A tiny reproducible PRNG is for appearance ONLY, never for game outcomes.
+  let visualSeed = 729;
+  const rand = () => { visualSeed = (visualSeed * 1664525 + 1013904223) >>> 0; return visualSeed / 4294967296; };
+  function dataTexture(size, fn) {
+    const bytes = new Uint8Array(size * size * 4);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const rgba = fn(x / size, y / size, x, y);
+      const i = (y * size + x) * 4;
+      for (let c = 0; c < 4; c++) bytes[i + c] = Math.max(0, Math.min(255, rgba[c]));
+    }
+    const tex = new T.DataTexture(bytes, size, size, T.RGBAFormat);
+    tex.needsUpdate = true;
+    tex.magFilter = T.LinearFilter;
+    tex.minFilter = T.LinearFilter;
+    ownedTextures.add(tex);
+    return tex;
+  }
+  const brushed = dataTexture(256, (u, v) => {
+    const r = Math.hypot(u - 0.5, v - 0.5);
+    const grain = 125 + Math.sin(r * 1600) * 19 + Math.sin(r * 4750) * 7 + rand() * 15;
+    return [grain, grain, grain, 255];
+  });
+  const stone = dataTexture(128, (u, v) => {
+    const a = Math.sin(u * 28 + Math.sin(v * 16) * 2);
+    const b = Math.sin(v * 67 + a * 4);
+    const n = 95 + a * 22 + b * 12 + rand() * 40;
+    return [n, n, n, 255];
+  });
+  const radial = dataTexture(64, (u, v) => {
+    const r = Math.hypot(u - 0.5, v - 0.5) * 2;
+    return [255, 255, 255, Math.pow(Math.max(0, 1 - r), 2.3) * 255];
+  });
+
+  // Capture a virtual photographic light tent once. No HDRI network request.
+  const environmentScene = new T.Scene();
+  environmentScene.background = new T.Color(0x393b40);
+  const lightCards = [];
+  function lightCard(w, h, position, color) {
+    const m = mesh(Geo('Plane', w, h), basic({ color, side: T.DoubleSide }), environmentScene);
+    m.position.set(...position); m.lookAt(0, 0, 0); lightCards.push(m);
+  }
+  lightCard(5.0, 5.5, [-4, 3, 3], 0xffffff);
+  lightCard(1.5, 6, [4, 0.5, 2], 0xffe5b0);
+  lightCard(3.0, 2, [0, 5, -1], 0xfff1d4);
+  lightCard(1.8, 5, [-3, 0, -4], 0xd4bd93);
+  lightCard(2, 1.7, [0, -4, 2], 0x7d6750);
+  let cubeCamera, environment;
+  if (T.WebGLCubeRenderTarget) {
+    const target = new T.WebGLCubeRenderTarget(128);
+    ownedTargets.add(target);
+    cubeCamera = new T.CubeCamera(0.1, 20, target);
+    environment = target.texture;
+  } else {
+    cubeCamera = new T.CubeCamera(0.1, 20, 128);
+    ownedTargets.add(cubeCamera.renderTarget);
+    environment = cubeCamera.renderTarget.texture;
+  }
+  cubeCamera.update(renderer, environmentScene);
+  lightCards.forEach(m => { m.geometry.dispose(); m.material.dispose(); });
+  environmentScene.clear ? environmentScene.clear() : lightCards.forEach(m => environmentScene.remove(m));
+
+  const gold = standard({ color: 0xdfb772, metalness: 0.94, roughness: 0.26, envMap: environment, envMapIntensity: 1.25, bumpMap: brushed, bumpScale: 0.012 });
+  const brightGold = standard({ color: 0xf5d79a, metalness: 0.96, roughness: 0.21, envMap: environment, envMapIntensity: 1.5 });
+  const darkGold = standard({ color: 0x997543, metalness: 0.90, roughness: 0.35, envMap: environment, envMapIntensity: 0.85 });
+  const faceGold = standard({ color: 0xcaa36a, metalness: 0.90, roughness: 0.37, envMap: environment, envMapIntensity: 1.15, bumpMap: brushed, bumpScale: 0.018 });
+  const obsidian = standard({ color: 0x191a19, roughness: 0.62, metalness: 0.34, envMap: environment, envMapIntensity: 0.5, bumpMap: stone, bumpScale: 0.09 });
+  const blackMetal = standard({ color: 0x121312, roughness: 0.29, metalness: 0.82, envMap: environment, envMapIntensity: 0.9 });
+  const glowMaterial = basic({ color: 0xffd293, transparent: true, opacity: 0.92, toneMapped: false });
+  const materials = [gold, brightGold, darkGold, faceGold, obsidian, blackMetal, glowMaterial];
+  scene.add(new T.HemisphereLight(0xffe5b8, 0x222731, modern ? 1.4 : 0.65));
+  const key = new T.DirectionalLight(0xffefd2, modern ? 3.2 : 1.3); key.position.set(-3, 5, 5); scene.add(key);
+  const fill = new T.DirectionalLight(0xffd19a, modern ? 1.8 : 0.75); fill.position.set(4, -1, 3); scene.add(fill);
+  const rim = new T.DirectionalLight(0xffffff, modern ? 2.5 : 1); rim.position.set(1, 3, -3); scene.add(rim);
+
+  // Batch the fine relief into one mesh per surface to keep draw calls low.
+  function triangleGeometry(vertices) {
+    const g = new T.BufferGeometry();
+    attr(g, 'position', new Float32Array(vertices), 3);
+    g.computeVertexNormals(); return g;
+  }
+  function addBox(vertices, cx, cy, cz, sx, sy, sz, theta = 0) {
+    const points = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+    const ids = [0,2,1,0,3,2,4,5,6,4,6,7,0,1,5,0,5,4,2,3,7,2,7,6,1,2,6,1,6,5,3,0,4,3,4,7];
+    const c = Math.cos(theta), s = Math.sin(theta);
+    for (const id of ids) {
+      const p = points[id], x = p[0] * sx / 2, y = p[1] * sy / 2;
+      vertices.push(cx + x * c - y * s, cy + x * s + y * c, cz + p[2] * sz / 2);
+    }
+  }
+  const coin = new T.Group(); scene.add(coin);
+  const body = mesh(Geo('Cylinder', 1.15, 1.15, 0.15, 128, 1), gold, coin);
+  body.rotation.x = Math.PI / 2;
+  const milling = [];
+  for (let i = 0; i < 144; i++) {
+    const a = i / 144 * Math.PI * 2;
+    addBox(milling, Math.cos(a) * 1.145, Math.sin(a) * 1.145, 0, 0.025, 0.022, 0.148, a);
+  }
+  mesh(triangleGeometry(milling), brightGold, coin);
+  function torus(r, thickness, z, material, parent) {
+    const m = mesh(Geo('Torus', r, thickness, 8, 128), material, parent);
+    m.position.z = z; return m;
+  }
+  function reliefStar(parent, cx, cy, radius, baseZ) {
+    const v = [];
+    const count = 16;
+    const pts = [];
+    for (let i = 0; i < count; i++) {
+      const a = i / count * Math.PI * 2 + Math.PI / 2;
+      const r = i % 2 ? radius * 0.18 : i % 4 ? radius * 0.67 : radius;
+      pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r, baseZ]);
+    }
+    for (let i = 0; i < count; i++) v.push(cx, cy, baseZ + radius * 0.18, ...pts[i], ...pts[(i + 1) % count]);
+    mesh(triangleGeometry(v), brightGold, parent);
+  }
+  function face(isBack) {
+    const group = new T.Group(); coin.add(group);
+    if (isBack) group.rotation.y = Math.PI;
+    const disk = mesh(Geo('Circle', 1.10, 128), faceGold, group); disk.position.z = 0.078;
+    torus(1.127, 0.022, 0.078, brightGold, group);
+    torus(1.073, 0.012, 0.083, darkGold, group);
+    torus(0.98, 0.009, 0.089, brightGold, group);
+    torus(0.87, 0.008, 0.092, gold, group);
+    const details = [];
+    for (let i = 0; i < 100; i++) {
+      const a = i / 100 * Math.PI * 2;
+      const start = 0.66 + (i % 5 === 0 ? -0.025 : 0.02);
+      const r = (start + 0.852) / 2;
+      addBox(details, Math.cos(a) * r, Math.sin(a) * r, 0.090, 0.852 - start, 0.005, 0.006, a);
+      addBox(details, Math.cos(a) * 1.038, Math.sin(a) * 1.038, 0.089, 0.018, 0.010, 0.007, a);
+    }
+    mesh(triangleGeometry(details), brightGold, group);
+    torus(0.634, 0.010, 0.092, darkGold, group);
+    const center = mesh(Geo('Circle', 0.622, 96), gold, group); center.position.z = 0.092;
+    if (!isBack) {
+      reliefStar(group, 0, 0, 0.57, 0.106);
+      reliefStar(group, 0, 0.932, 0.074, 0.099);
+      reliefStar(group, 0, -0.932, 0.074, 0.099);
+      reliefStar(group, -0.932, 0, 0.060, 0.099);
+      reliefStar(group, 0.932, 0, 0.060, 0.099);
+    } else {
+      const crescent = new T.Shape();
+      crescent.moveTo(0.23, 0.46);
+      crescent.bezierCurveTo(-0.46, 0.55, -0.62, -0.35, -0.06, -0.47);
+      crescent.bezierCurveTo(0.10, -0.51, 0.27, -0.41, 0.36, -0.25);
+      crescent.bezierCurveTo(-0.15, -0.42, -0.29, 0.23, 0.23, 0.46);
+      const c = mesh(Geo('Extrude', crescent, { depth: 0.033, amount: 0.033, bevelEnabled: true, bevelSegments: 2, steps: 1, bevelSize: 0.012, bevelThickness: 0.012, curveSegments: 32 }), brightGold, group);
+      c.position.z = 0.103;
+      reliefStar(group, 0.27, 0.19, 0.14, 0.12);
+      reliefStar(group, 0.39, -0.08, 0.055, 0.11);
+      reliefStar(group, 0, 0.932, 0.074, 0.10);
+      reliefStar(group, 0, -0.932, 0.074, 0.10);
+    }
+  }
+  face(false); face(true);
+
+
+  // Gold-inlaid vector numerals: no Canvas2D, font files, textures or DOM needed.
+  const glyphs={
+    '0':[[[.17,.04],[.06,.20],[.06,.80],[.17,.96],[.43,.96],[.54,.80],[.54,.20],[.43,.04],[.17,.04]]],
+    '1':[[[.12,.72],[.31,.96],[.31,.04]],[[.12,.04],[.50,.04]]],
+    '2':[[[.06,.77],[.10,.91],[.26,.97],[.45,.91],[.54,.76],[.51,.61],[.06,.04],[.56,.04]]],
+    '3':[[[.07,.88],[.24,.96],[.45,.93],[.54,.78],[.49,.64],[.30,.53],[.48,.45],[.54,.30],[.50,.13],[.34,.04],[.12,.08],[.05,.17]]],
+    '4':[[[.44,.04],[.44,.97],[.03,.34],[.60,.34]]],
+    '5':[[[.54,.95],[.10,.95],[.07,.54],[.35,.58],[.51,.47],[.55,.25],[.47,.08],[.26,.04],[.07,.13]]],
+    '6':[[[.49,.94],[.29,.96],[.12,.81],[.05,.54],[.05,.24],[.15,.07],[.37,.04],[.53,.21],[.51,.42],[.34,.56],[.15,.52],[.05,.38]]],
+    '7':[[[.05,.95],[.56,.95],[.21,.04]]],
+    '8':[[[.29,.51],[.09,.67],[.08,.84],[.24,.97],[.45,.92],[.54,.76],[.45,.59],[.29,.51],[.08,.34],[.07,.16],[.24,.04],[.45,.07],[.54,.23],[.48,.39],[.29,.51]]],
+    '9':[[[.50,.62],[.35,.45],[.15,.47],[.05,.65],[.08,.84],[.23,.96],[.43,.91],[.53,.73],[.52,.41],[.44,.17],[.26,.04],[.09,.06]]]
+  };
+  let diceModel=null, dieSpec=null, diceKey=0, skinKey='', displayedFace=1;
+  const dieMotion=createDieMotion();
+  const dieBodyMat=standard({color:0x756045,metalness:.82,roughness:.27,envMap:environment,envMapIntensity:1.05});
+  const dieInsetMat=standard({color:0x51452f,metalness:.72,roughness:.36,envMap:environment,envMapIntensity:.9});
+  const dieNumberMat=standard({color:0xffdf9a,metalness:.82,roughness:.23,envMap:environment,envMapIntensity:1.5});
+  const dieEdgeMat=new T.LineBasicMaterial({color:0xe9c68e,transparent:true,opacity:.65});
+  materials.push(dieBodyMat,dieInsetMat,dieNumberMat,dieEdgeMat);
+  function disposeDie(){
+    if(!diceModel)return;
+    diceModel.traverse(o=>{if(o.geometry)o.geometry.dispose();});scene.remove(diceModel);diceModel=null;
+  }
+  function buildDie(count){
+    disposeDie();dieSpec=makeDieSpec(count);diceKey=count;
+    diceModel=new T.Group();scene.add(diceModel);
+    const shell=[],insets=[],numbers=[],edges=[];
+    const bevelScale=count===4?.78:count===12?.84:.82;
+    const faceLift=count===4?.050:count===12?.040:.036;
+    const insetScale=count===4?.70:count===12?.76:.74;
+    const insetLift=faceLift+.010;
+    for(const f of dieSpec.faces){
+      const pts=f.indices.map(id=>dieSpec.vertices[id]);
+      const bevel=pts.map(p=>p.map((x,i)=>f.center[i]+(x-f.center[i])*bevelScale+f.normal[i]*faceLift));
+      for(let i=1;i<bevel.length-1;i++)shell.push(...bevel[0],...bevel[i],...bevel[i+1]);
+      for(let i=0;i<pts.length;i++){
+        const a=pts[i],b=pts[(i+1)%pts.length],c=bevel[(i+1)%pts.length],d=bevel[i];
+        shell.push(...a,...b,...c,...a,...c,...d);
+        edges.push(...d,...c);
+      }
+      const inset=pts.map(p=>p.map((x,i)=>f.center[i]+(x-f.center[i])*insetScale+f.normal[i]*insetLift));
+      for(let i=1;i<inset.length-1;i++)insets.push(...inset[0],...inset[i],...inset[i+1]);
+      const text=String(f.value),unit=f.inradius*(text.length>1?1.04:1.20),textWidth=(text.length*.72-.12)*unit;
+      function world(x,y,z=insetLift+.008){return f.center.map((c,i)=>c+f.u[i]*x+f.v[i]*y+f.normal[i]*z);}
+      function line(ax,ay,bx,by){
+        const dx=bx-ax,dy=by-ay,len=Math.hypot(dx,dy);if(len<1e-8)return;
+        const w=unit*.025,nx=-dy/len*w,ny=dx/len*w;
+        const corners=[world(ax+nx,ay+ny),world(ax-nx,ay-ny),world(bx-nx,by-ny),world(bx+nx,by+ny)];
+        numbers.push(...corners[0],...corners[1],...corners[2],...corners[0],...corners[2],...corners[3]);
+        for(const [x,y] of [[ax,ay],[bx,by]])for(let j=0;j<8;j++){
+          const a=j*Math.PI/4,b=(j+1)*Math.PI/4;
+          numbers.push(...world(x,y),...world(x+Math.cos(a)*w,y+Math.sin(a)*w),...world(x+Math.cos(b)*w,y+Math.sin(b)*w));
+        }
+      }
+      text.split('').forEach((char,index)=>{for(const path of glyphs[char])for(let i=1;i<path.length;i++){
+        const p=path[i-1],q=path[i];line((p[0]+index*.72)*unit-textWidth/2,(p[1]-.5)*unit,(q[0]+index*.72)*unit-textWidth/2,(q[1]-.5)*unit);
+      }});
+      if(f.value===6||f.value===9)line(-unit*.13,-unit*.65,unit*.13,-unit*.65);
+    }
+    mesh(triangleGeometry(shell),dieBodyMat,diceModel);
+    mesh(triangleGeometry(insets),dieInsetMat,diceModel);
+    mesh(triangleGeometry(numbers),dieNumberMat,diceModel);
+    const edgeGeo=new T.BufferGeometry();attr(edgeGeo,'position',new Float32Array(edges),3);
+    diceModel.add(new T.LineSegments(edgeGeo,dieEdgeMat));
+  }
+  function applySkin(id){
+    if(skinKey===id)return;skinKey=id;const s=getStyle(id);
+    gold.color.setHex(s.body);brightGold.color.setHex(s.bright);darkGold.color.setHex(s.dark);faceGold.color.setHex(s.face);
+    dieBodyMat.color.setHex(s.dice);dieInsetMat.color.setHex(s.dice).multiplyScalar(.64);
+    dieNumberMat.color.setHex(s.bright);dieEdgeMat.color.setHex(s.bright);
+  }
+
+  const pedestal = new T.Group(); scene.add(pedestal);
+  const plinth = mesh(Geo('Cylinder', 1.28, 1.32, 0.105, 128), obsidian, pedestal); plinth.position.y = -1.545;
+  const lip = mesh(Geo('Cylinder', 1.31, 1.29, 0.025, 128), blackMetal, pedestal); lip.position.y = -1.46;
+  const top = mesh(Geo('Cylinder', 1.22, 1.22, 0.012, 128), obsidian, pedestal); top.position.y = -1.444;
+  function floorRing(r, tube, material, h = -1.38) {
+    const ring = mesh(Geo('Torus', r, tube, 8, 160), material, pedestal);
+    ring.rotation.x = -Math.PI / 2; ring.position.y = h; return ring;
+  }
+  floorRing(1.13, 0.011, glowMaterial, -1.441);
+  floorRing(1.22, 0.0065, darkGold, -1.446);
+  floorRing(0.96, 0.0055, brightGold, -1.438);
+  floorRing(1.31, 0.008, darkGold, -1.492);
+  const glowRings = [];
+  for (let i = 0; i < 8; i++) {
+    const mat = basic({ color: 0xffbf69, transparent: true, opacity: 0.024 * (1 - i / 8), depthWrite: false, blending: T.AdditiveBlending, side: T.DoubleSide, toneMapped: false });
+    const ring = mesh(Geo('Ring', 1.10 - i * 0.017, 1.14 + i * 0.028, 128), mat, pedestal);
+    ring.rotation.x = -Math.PI / 2; ring.position.y = -1.432 + i * 0.0004; glowRings.push(ring);
+  }
+  const shadowMat = basic({ color: 0x000000, map: radial, transparent: true, opacity: 0.72, depthWrite: false });
+  const contact = mesh(Geo('Plane', 1.72, 1.72), shadowMat, pedestal);
+  contact.rotation.x = -Math.PI / 2; contact.position.y = -1.431;
+  const halo = new T.Sprite(new T.SpriteMaterial({ map: radial, color: 0xffc475, transparent: true, opacity: 0.16, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false }));
+  halo.scale.set(4.65, 4.65, 1); halo.position.set(0, 0.25, -0.9); scene.add(halo);
+  const orbit = mesh(Geo('Torus', 1.10, 0.0026, 4, 160), basic({ color: 0xf1c989, transparent: true, opacity: 0.16, depthWrite: false }));
+  orbit.rotation.set(0.12, 0.30, -0.5); orbit.position.set(0, 0.18, -0.7);
+
+  // A single point cloud; screen-space feathering replaces heavy bloom passes.
+  const count = 240, positions = new Float32Array(count * 3), phases = new Float32Array(count), sizes = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    positions[i * 3] = (rand() - 0.5) * 6.6;
+    positions[i * 3 + 1] = rand() * 4.8 - 1.8;
+    positions[i * 3 + 2] = (rand() - 0.5) * 3;
+    phases[i] = rand() * 6.283;
+    sizes[i] = 1.0 + Math.pow(rand(), 3) * 3.8;
+  }
+  const particleGeo = new T.BufferGeometry();
+  attr(particleGeo, 'position', positions, 3); attr(particleGeo, 'aPhase', phases, 1); attr(particleGeo, 'aSize', sizes, 1);
+  const particleMaterial = new T.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uPower: { value: 0 }, uDpr: { value: 1 }, uBurst: { value: 0 } },
+    vertexShader: `attribute float aPhase; attribute float aSize; uniform float uTime; uniform float uPower; uniform float uDpr; uniform float uBurst; varying float vAlpha;
+      void main(){ vec3 p=position; p.y += sin(uTime*0.23+aPhase)*0.18; p.x+=sin(uTime*0.18+aPhase)*0.12;
+      float a=aPhase+uTime*(0.1+uPower*0.8); vec3 orbit=vec3(cos(a)*1.45, sin(a)*1.45+0.2,position.z*0.45);
+      p=mix(p,orbit,uPower*0.66); p.xy+=normalize(p.xy+vec2(0.001))*uBurst*0.65;
+      vec4 mv=modelViewMatrix*vec4(p,1.); gl_Position=projectionMatrix*mv; gl_PointSize=aSize*uDpr*(1.+uPower*0.65);
+      vAlpha=(0.23+0.6*pow(0.5+0.5*sin(aPhase+uTime),3.))*(1.+uPower*0.6); }`,
+    fragmentShader: `precision mediump float; varying float vAlpha; void main(){ float d=length(gl_PointCoord-0.5)*2.; if(d>1.)discard; float a=pow(1.-d,1.8)*vAlpha; gl_FragColor=vec4(1.,0.76,0.4,a); }`,
+    transparent: true, blending: T.AdditiveBlending, depthWrite: false
+  });
+  const particles = new T.Points(particleGeo, particleMaterial); scene.add(particles);
+  // Smaller broken stones: more numerous, more irregular, but still balanced around the pedestal.
+  const stoneClusters = [
+    [-1, 1.18, -0.28], [-1, 1.34, -0.02], [-1, 1.56, 0.18], [-1, 1.72, 0.42],
+    [ 1, 1.16, -0.24], [ 1, 1.33, 0.00], [ 1, 1.53, 0.16], [ 1, 1.70, 0.40],
+    [-1, 1.88, -0.06], [ 1, 1.90, -0.02], [-1, 2.02, 0.24], [ 1, 2.06, 0.26],
+    [-1, 1.46, 0.64], [ 1, 1.44, 0.66]
+  ];
+  for (let i = 0; i < stoneClusters.length; i++) {
+    const [side, radius, zBias] = stoneClusters[i];
+    const r = mesh(Geo('Dodecahedron', 0.09 + rand() * 0.10, 0), obsidian);
+    const jitter = (rand() - 0.5) * 0.14;
+    const x = side * (radius + jitter);
+    const y = -1.668 + rand() * 0.08;
+    const z = zBias + (rand() - 0.5) * 0.18;
+    r.position.set(x, y, z);
+    r.scale.set(0.68 + rand() * 0.45, 0.46 + rand() * 0.56, 0.66 + rand() * 0.50);
+    r.rotation.set(rand() * Math.PI, rand() * Math.PI, rand() * Math.PI);
+  }
+  function resize(w, h, ratio = pixelRatio) {
+    if (disposed || w <= 0 || h <= 0) return;
+    width = w; height = h; pixelRatio = ratio;
+    dpr = Math.min(ratio || 1, currentQuality === 'low' ? 1 : currentQuality === 'high' ? 2 : 1.5);
+    renderer.setPixelRatio(dpr); renderer.setSize(w, h, false);
+    const vertical = Math.max(4.50, 4.45 / (w / h));
+    camera.left = -vertical * w / h / 2; camera.right = vertical * w / h / 2;
+    camera.top = vertical / 2 + 0.18; camera.bottom = -vertical / 2 + 0.18;
+    camera.updateProjectionMatrix(); particleMaterial.uniforms.uDpr.value = dpr;
+    particleGeo.setDrawRange(0, currentQuality === 'low' ? 90 : count);
+  }
+  function render(state) {
+    if (disposed) return;
+    const pose = state.pose;
+    applySkin(state.style || 'gold');
+    coin.visible=state.mode!=='dice';
+    if(state.mode==='dice'){
+      if(diceKey!==state.faces)buildDie(state.faces);
+      diceModel.visible=true;
+      const q=dieMotion.update(state,dieSpec);
+      const displayQ = new T.Quaternion(...q);
+      if(state.faces===4){
+        const bias = new T.Quaternion().setFromEuler(new T.Euler(-0.58, 0.78, 0.12, 'XYZ'));
+        displayQ.multiply(bias);
+      }
+      diceModel.quaternion.copy(camera.quaternion).multiply(displayQ);
+      diceModel.position.set(0, pose.lift, 0);
+      diceModel.scale.setScalar(pose.scale * (state.faces===4 ? 1.03 : 0.99));
+      displayedFace=state.result?.value||state.target||state.value;
+    }else if(diceModel)diceModel.visible=false;
+    coin.position.set(0, pose.lift, 0);
+    coin.rotation.set(pose.x, pose.y, pose.z);
+    coin.scale.setScalar(pose.scale);
+    camera.position.set(baseCamera.x, baseCamera.y, baseCamera.z);
+    camera.lookAt(baseCamera.lookX, baseCamera.lookY, baseCamera.lookZ);
+    camera.zoom = state.zoom; camera.updateProjectionMatrix();
+    glowMaterial.opacity = 0.75 + state.energy * 0.25;
+    glowRings.forEach((r, i) => { r.material.opacity = (0.027 + state.energy * 0.06) * (1 - i / 8); });
+    halo.material.opacity = 0.13 + state.energy * 0.20;
+    halo.scale.setScalar(5.2 + state.energy * 0.5);
+    contact.scale.setScalar(1 + Math.max(0, pose.lift - 0.22) * 0.40);
+    shadowMat.opacity = 0.65 / (1 + Math.max(0, pose.lift) * 1.6);
+    orbit.rotation.z = -0.5 + state.time * 0.015;
+    particleMaterial.uniforms.uTime.value = state.time;
+    particleMaterial.uniforms.uPower.value = state.energy;
+    particleMaterial.uniforms.uBurst.value = state.burst;
+    particles.visible = !state.reducedMotion || state.state === 'charging';
+    renderer.render(scene, camera);
+  }
+  function dispose() {
+    if (disposed) return;
+    disposed = true;
+    const geometries = new Set(), mats = new Set(materials);
+    scene.traverse(obj => {
+      if (obj.geometry) geometries.add(obj.geometry);
+      if (obj.material) (Array.isArray(obj.material) ? obj.material : [obj.material]).forEach(m => mats.add(m));
+    });
+    geometries.forEach(g => g.dispose()); mats.forEach(m => m.dispose());
+    ownedTextures.forEach(t => t.dispose()); ownedTargets.forEach(t => t.dispose());
+    renderer.dispose();
+  }
+  resize(width, height, pixelRatio);
+  return { render, resize, dispose,
+    setQuality(value) { currentQuality = value; resize(width, height, pixelRatio); },
+    getDiagnostics() { return { revision: T.REVISION, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, pixelRatio: dpr, mode: coin.visible ? "coin" : "dice", faces: diceKey, visibleValue: displayedFace, style: skinKey, memory: { geometries: renderer.info.memory.geometries, textures: renderer.info.memory.textures } }; }
+  };
+}
+
+
+// ===== src/platform/web.js =====
+/** Browser-only APIs. Nothing in core depends on this file. */
+function browserRandom() {
+  if (globalThis.crypto && globalThis.crypto.getRandomValues) {
+    const value = new Uint32Array(1); globalThis.crypto.getRandomValues(value);
+    return value[0] / 4294967296;
+  }
+  return Math.random();
+}
+const browserStorage = {
+  get(key) { return localStorage.getItem(key); },
+  set(key, value) { localStorage.setItem(key, value); },
+  remove(key) { localStorage.removeItem(key); }
+};
+function browserHaptic(enabled, strong = false) {
+  if (enabled && navigator.vibrate) { try { navigator.vibrate(strong ? [12, 28, 18] : 9); } catch {} }
+}
+class WebAudioFeedback {
+  constructor() { this.ctx = null; this.charging = null; this.enabled = true; this.nodes = new Set(); }
+  unlock() {
+    if (!this.enabled) return;
+    try {
+      if (!this.ctx) { const Context = window.AudioContext || window.webkitAudioContext; if (Context) this.ctx = new Context(); }
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+    } catch { this.ctx = null; }
+  }
+  setEnabled(value) { this.enabled = !!value; if (!value) this.stopCharge(); }
+  startCharge() {
+    this.stopCharge(); this.unlock(); if (!this.enabled || !this.ctx) return;
+    const c = this.ctx, osc = c.createOscillator(), gain = c.createGain();
+    osc.type = 'sine'; osc.frequency.value = 105; gain.gain.value = 0;
+    osc.connect(gain); gain.connect(c.destination); osc.start();
+    gain.gain.linearRampToValueAtTime(0.022, c.currentTime + 0.14);
+    this.charging = { osc, gain };
+  }
+  power(value) {
+    if (!this.charging || !this.ctx) return;
+    this.charging.osc.frequency.setTargetAtTime(105 + value * 185, this.ctx.currentTime, 0.1);
+    this.charging.gain.gain.setTargetAtTime(0.018 + value * 0.014, this.ctx.currentTime, 0.1);
+  }
+  stopCharge() {
+    if (!this.charging) return;
+    const { osc, gain } = this.charging; this.charging = null;
+    try {
+      const now = this.ctx.currentTime;
+      gain.gain.cancelScheduledValues(now); gain.gain.setTargetAtTime(0.0001, now, 0.025);
+      osc.stop(now + 0.15); osc.onended = () => { osc.disconnect(); gain.disconnect(); };
+    } catch { osc.disconnect(); gain.disconnect(); }
+  }
+  note(frequency, delay = 0, duration = 0.7, volume = 0.045) {
+    if (!this.enabled || !this.ctx) return;
+    const c = this.ctx, now = c.currentTime + delay, osc = c.createOscillator(), gain = c.createGain();
+    osc.type = 'sine'; osc.frequency.setValueAtTime(frequency, now);
+    gain.gain.setValueAtTime(0, now); gain.gain.linearRampToValueAtTime(volume, now + 0.007); gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    osc.connect(gain); gain.connect(c.destination); osc.start(now); osc.stop(now + duration + 0.03);
+    this.nodes.add(osc); osc.onended = () => { this.nodes.delete(osc); osc.disconnect(); gain.disconnect(); };
+  }
+  throw(power) {
+    this.stopCharge(); if (!this.enabled || !this.ctx) return;
+    const c = this.ctx, n = Math.ceil(c.sampleRate * 0.24), buffer = c.createBuffer(1, n, c.sampleRate), data = buffer.getChannelData(0);
+    for (let i = 0; i < n; i++) data[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / n);
+    const src = c.createBufferSource(), filter = c.createBiquadFilter(), gain = c.createGain();
+    src.buffer = buffer; filter.type = 'bandpass'; filter.frequency.setValueAtTime(450, c.currentTime); filter.frequency.exponentialRampToValueAtTime(2600, c.currentTime + 0.2);
+    gain.gain.value = 0.06 + power * 0.025; src.connect(filter); filter.connect(gain); gain.connect(c.destination); src.start();
+    this.nodes.add(src); src.onended = () => { this.nodes.delete(src); src.disconnect(); filter.disconnect(); gain.disconnect(); };
+  }
+  result() { this.note(1046.5, 0, 1.1, 0.04); this.note(1568, 0.055, 0.85, 0.02); this.note(2093, 0.09, 0.55, 0.01); }
+  suspend() { this.stopCharge(); if (this.ctx) this.ctx.suspend().catch(() => {}); }
+  dispose() {
+    this.stopCharge(); this.nodes.forEach(n => { try { n.stop(); n.disconnect(); } catch {} }); this.nodes.clear();
+    if (this.ctx) this.ctx.close().catch(() => {}); this.ctx = null;
+  }
+}
+
+
+// ===== src/web/fallback.js =====
+
+
+/** Clearly labelled 2D fallback: SVG relief + CSS transforms. Not a WebGL substitute. */
+function coinSvg(side) {
+  const id = side === 'heads' ? 'h' : 't';
+  const polar = (r, a) => [150 + r * Math.cos(a), 150 + r * Math.sin(a)];
+  let spokes = '', beads = '', triangles = '';
+  for (let i = 0; i < 120; i++) {
+    const a = i / 120 * Math.PI * 2, p = polar(i % 5 ? 88 : 84, a), q = polar(113, a), r = polar(135, a);
+    spokes += `<path d="M${p[0]} ${p[1]}L${q[0]} ${q[1]}"/>`;
+    beads += `<path d="M${r[0]} ${r[1]}l${Math.cos(a)*3.5} ${Math.sin(a)*3.5}"/>`;
+  }
+  if (side === 'heads') {
+    const points = [];
+    for (let i = 0; i < 16; i++) points.push(polar(i % 2 ? 16 : i % 4 ? 44 : 72, i / 16 * Math.PI * 2 - Math.PI / 2));
+    for (let i = 0; i < 16; i++) triangles += `<path d="M150 150L${points[i][0]} ${points[i][1]}L${points[(i+1)%16][0]} ${points[(i+1)%16][1]}Z" fill="${i%2 ? '#ac834c' : `url(#${id}star)`}"/>`;
+  } else triangles = `<path d="M178 85C99 71 69 166 122 201C149 219 183 203 195 178C127 200 107 111 178 85Z" fill="url(#${id}star)" stroke="#fce3ac" stroke-width=".8"/><path d="m192 110 4 17 17 4-17 4-4 17-4-17-17-4 17-4Z" fill="url(#${id}star)"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs>
+    <linearGradient id="${id}gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c5"/><stop offset=".18" stop-color="#ba8e4b"/><stop offset=".36" stop-color="#f1d7a0"/><stop offset=".52" stop-color="#b99254"/><stop offset=".72" stop-color="#e6c58b"/><stop offset="1" stop-color="#9c743d"/></linearGradient>
+    <linearGradient id="${id}star" x1="0" y1="0" x2="1" y2=".9"><stop stop-color="#fff3cc"/><stop offset=".48" stop-color="#e9ce95"/><stop offset="1" stop-color="#b99961"/></linearGradient>
+    <radialGradient id="${id}face" cx="30%" cy="20%" r="85%"><stop stop-color="#e5cca1"/><stop offset=".45" stop-color="#bd9a63"/><stop offset="1" stop-color="#907044"/></radialGradient>
+    <filter id="${id}relief" x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx="1" dy="1.6" stdDeviation=".8" flood-color="#523814" flood-opacity=".75"/></filter>
+  </defs><circle cx="150" cy="150" r="146" fill="url(#${id}gold)" stroke="#f2d7a7" stroke-width="2"/>
+  <circle cx="150" cy="150" r="141" fill="none" stroke="#765229" stroke-width="1.2"/><circle cx="150" cy="150" r="129" fill="url(#${id}face)" stroke="#f3d9a6" stroke-width="2"/>
+  <g stroke="#f7dba3" stroke-width="1" opacity=".8">${beads}</g><g stroke="#efcf8e" stroke-width=".65" filter="url(#${id}relief)">${spokes}</g>
+  <circle cx="150" cy="150" r="118" fill="none" stroke="#75542b" stroke-width="1.2"/><circle cx="150" cy="150" r="115" fill="none" stroke="#f8dca8" stroke-width="1.1"/>
+  <circle cx="150" cy="150" r="81" fill="url(#${id}gold)" stroke="#674c2a" stroke-width="1.4"/><circle cx="150" cy="150" r="77" fill="none" stroke="#fae3b4" stroke-width=".8" opacity=".6"/>
+  <g opacity=".17" fill="none" stroke="#ffecc0" stroke-width=".5">${Array.from({length:34},(_,i)=>`<circle cx="150" cy="150" r="${38+i*1.05}"/>`).join('')}</g>
+  <g filter="url(#${id}relief)">${triangles}</g><path d="m150 25 2 6 6 2-6 2-2 6-2-6-6-2 6-2Zm0 234 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#fff0bf"/>
+  <text x="150" y="251" fill="#e7cb93" stroke="#68461e" stroke-width=".25" font-family="Georgia,serif" font-size="7" letter-spacing="3.5" text-anchor="middle">${side === 'heads' ? 'H E A D S' : 'T A I L S'}</text></svg>`;
+}
+
+function createFallback(root) {
+  root.hidden=false;
+  root.querySelector('#fallbackFront').innerHTML=coinSvg('heads');
+  root.querySelector('#fallbackBack').innerHTML=coinSvg('tails');
+  const coinEl=root.querySelector('#fallbackCoin'),dust=root.querySelector('#fallbackDust');
+  let dieEl=root.querySelector('.fallback-die');
+  if(!dieEl){dieEl=document.createElement('div');dieEl.className='fallback-die';root.append(dieEl);}
+  const motion=createDieMotion();let skin='',spec=null,shown=1,mode='coin',lastFrame='';
+  dust.replaceChildren();
+  for(let i=0;i<40;i++){
+    const dot=document.createElement('i');dot.style.left=`${(i*53.13%83)+8}%`;dot.style.top=`${(i*37.19%75)+5}%`;
+    dot.style.setProperty('--dur',`${5+i%7}s`);dot.style.animationDelay=`${-(i%9)}s`;dust.append(dot);
+  }
+  function shade(hex,intensity){const rgb=[hex>>16&255,hex>>8&255,hex&255].map(v=>Math.min(255,Math.round(v*intensity)));return `rgb(${rgb.join(',')})`;}
+  function renderDie(snapshot){
+    if(!spec||spec.count!==snapshot.faces)spec=makeDieSpec(snapshot.faces);
+    const q=motion.update(snapshot,spec),points=spec.vertices.map(p=>rotateDiceVector(p,q));
+    const theme=getStyle(snapshot.style),unit=100;
+    const facets=spec.faces.map(face=>({face,normal:rotateDiceVector(face.normal,q),center:rotateDiceVector(face.center,q)})).filter(item=>item.normal[2]>.001).sort((a,b)=>a.center[2]-b.center[2]);
+    shown=facets.reduce((a,b)=>a.normal[2]>b.normal[2]?a:b).face.value;
+    const paths=facets.map(({face,normal,center})=>{
+      const coordinates=face.indices.map(id=>`${160+points[id][0]*unit},${160-points[id][1]*unit}`).join(' ');
+      const u=rotateDiceVector(face.u,q),v=rotateDiceVector(face.v,q);
+      const light=.64+Math.max(0,normal[0]*-.45+normal[1]*.64+normal[2]*.70)*1.2;
+      const font=face.inradius*(String(face.value).length>1?1.04:1.3)*unit;
+      const tx=160+center[0]*unit,ty=160-center[1]*unit;
+      return `<polygon points="${coordinates}" fill="${shade(theme.dice,light)}" stroke="${shade(theme.bright,.74)}" stroke-width="1.15" stroke-linejoin="round"/><g transform="matrix(${u[0]} ${-u[1]} ${-v[0]} ${v[1]} ${tx} ${ty})"><text y="${font*.32}" text-anchor="middle" font-family="Georgia,serif" font-size="${font}" fill="${shade(theme.bright,1.05)}">${face.value}</text>${[6,9].includes(face.value)?`<path d="M${-font*.12} ${font*.49}h${font*.24}" stroke="${shade(theme.bright,1)}" stroke-width="1"/>`:''}</g>`;
+    }).join('');
+    const svg=`<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">${paths}</svg>`;
+    if(svg!==lastFrame){dieEl.innerHTML=svg;lastFrame=svg;}
+  }
+  return {
+    render(snapshot){
+      const p=snapshot.pose,multiplier=root.clientWidth<500?66:76;mode=snapshot.mode;
+      coinEl.hidden=mode==='dice';dieEl.hidden=mode!=='dice';
+      if(skin!==snapshot.style){skin=snapshot.style;root.dataset.skin=skin;}
+      if(mode==='dice'){
+        renderDie(snapshot);
+        dieEl.style.transform=`translate(-50%, calc(-50% - ${(p.lift-.22)*multiplier}px)) scale(${p.scale*snapshot.zoom})`;
+      }else{
+        root.querySelector('#fallbackBack').style.transform='rotateX(180deg) translateZ(5px)';
+        coinEl.style.transform=`translate(-50%, calc(-50% - ${(p.lift-.22)*multiplier}px)) rotateZ(${-p.z}rad) rotateY(${-p.y}rad) rotateX(${p.x}rad) scale(${p.scale*snapshot.zoom})`;
+      }
+      root.style.setProperty('--power',snapshot.energy);
+    },
+    dispose(){root.hidden=true;},resize(){},setQuality(){},
+    getDiagnostics(){return {renderer:'2d-fallback',mode,faces:spec?spec.count:0,visibleValue:shown,style:skin};}
+  };
+}
+
+
+// ===== src/web/main.js =====
+
+
+
+
+
+
+
+const $ = id => document.getElementById(id);
+const experience = $('experience'), button = $('chargeButton'), sceneWrap = $('sceneWrap');
+const store = createStore(browserStorage), audio = new WebAudioFeedback();
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const forceFallback = new URLSearchParams(location.search).get('mode') === '2d';
+const testMode = new URLSearchParams(location.search).get('test') === '1';
+let view = createFallback($('fallbackScene')), webglView = null, destroyed = false;
+let activeElement = null;
+let activePointer = null, activeKey = false, lastTime = null, raf = null, toastTimer;
+let lastPercent = -1, lastState = '', loadAttempt = 0;
+for (const style of COIN_STYLES) {
+  const control=document.createElement('button');control.className='style-choice';control.dataset.style=style.id;
+  control.setAttribute('aria-label',style.name);control.setAttribute('aria-pressed','false');
+  const swatch=document.createElement('i');swatch.style.setProperty('--swatch',style.color);
+  const label=document.createElement('span');label.textContent=style.name;control.append(swatch,label);$('styleOptions').append(control);
+}
+for (const faces of DICE_FACES) {
+  const control=document.createElement('button');control.className='face-choice';control.dataset.faces=String(faces);
+  control.setAttribute('aria-label',`${faces} 面骰子`);control.setAttribute('aria-pressed','false');control.textContent=`D${faces}`;$('faceOptions').append(control);
+}
+const selectionControls=[...document.querySelectorAll('[data-mode],[data-style],[data-faces]')];
+const ticks = Array.from({ length: 15 }, () => { const i = document.createElement('i'); $('powerTicks').append(i); return i; });
+function toast(text) { $('toast').textContent = text; $('toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').classList.remove('show'), 3000); }
+function sideText(side) { return side === 'heads' ? '正面' : '反面'; }
+function choiceText(side) { return side === 'heads' ? store.data.settings.headsLabel : store.data.settings.tailsLabel; }
+function renderCounts() {
+  const { totals } = store.data, total = totals.heads + totals.tails + totals.dice;
+  $('historyCount').textContent = total > 99 ? '99+' : String(total);
+  $('totalStat').textContent = total; $('headsStat').textContent = totals.heads; $('tailsStat').textContent = totals.tails; $('diceStat').textContent = totals.dice;
+  $('storageNote').textContent = store.persistent ? '记录仅保存在本机' : '存储不可用：仅本次会话有效';
+}
+const game = new CoinGame({ random: browserRandom, onEvent(event) {
+  const settings = store.data.settings;
+  switch (event.type) {
+    case 'charge-start': audio.startCharge(); browserHaptic(settings.haptics); $('resultLine').classList.remove('revealed'); break;
+    case 'charge-cancel': audio.stopCharge(); break;
+    case 'full-charge': browserHaptic(settings.haptics); audio.note(523.25, 0, .23, .018); break;
+    case 'throw': audio.throw(event.power); browserHaptic(settings.haptics); break;
+
+    case 'result': {
+      const record = store.add(event.result); audio.result(); browserHaptic(settings.haptics, true); renderCounts();
+      $('resultLine').classList.add('revealed'); $('announcer').textContent = record.mode === 'dice' ? `本次 D${record.faces} 骰子结果：${record.value} 点。` : `本次结果：${sideText(record.side)}，${record.label}。`;
+      if ($('historyDialog').open) renderHistory();
+      break;
+    }
+    case 'error': toast(event.message); break;
+  }
+} });
+function applySettings({ syncInputs = false } = {}) {
+  const s = store.data.settings;
+  game.setSelection({ mode: s.mode, faces: s.faces, style: s.style });
+  experience.dataset.mode=s.mode;
+  $('coinMode').setAttribute('aria-pressed',String(s.mode==='coin'));
+  $('diceMode').setAttribute('aria-pressed',String(s.mode==='dice'));
+  document.querySelectorAll('[data-style]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.style===s.style)));
+  document.querySelectorAll('[data-faces]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.faces)===s.faces)));
+  $('diceOptions').hidden=s.mode!=='dice';
+  $('heroTitle').textContent=s.mode==='dice'?'掷 骰 子':'抛 硬 币';
+  $('heroSubtitle').textContent=s.mode==='dice'?`仅保留正多面体骰子：D4 / D6 / D8 / D12。`:'一枚硬币，两种可能。';
+  $('geometryNote').textContent=makeDieSpec(s.faces).kind+' · 数字面朝向你揭晓';
+  $('coinProbability').hidden=s.mode==='dice';$('diceProbability').hidden=s.mode!=='dice';
+  $('diceProbability').textContent=`D${s.faces} · 1—${s.faces} 点 · 每面概率 1/${s.faces}`;
+  $('stageIndex').textContent=s.mode==='dice'?`D${s.faces} / 正多面体`:`0${COIN_STYLES.findIndex(st=>st.id===s.style)+1} / 04`;
+  game.setReducedMotion(s.reducedMotion || motionQuery.matches);
+  document.documentElement.dataset.reducedMotion = String(game.reducedMotion);
+  audio.setEnabled(s.sound); view.setQuality(s.quality);
+  $('headsPreview').textContent = s.headsLabel; $('tailsPreview').textContent = s.tailsLabel;
+  $('soundSetting').checked = s.sound; $('hapticsSetting').checked = s.haptics;
+  $('motionSetting').checked = s.reducedMotion; $('qualitySetting').value = s.quality;
+  if (syncInputs) { $('headsInput').value = s.headsLabel; $('tailsInput').value = s.tailsLabel; }
+  $('soundButton').setAttribute('aria-pressed', String(s.sound));
+  $('soundButton').setAttribute('aria-label', s.sound ? '关闭音效' : '开启音效');
+  $('soundLabel').textContent = s.sound ? '音效已开启' : '音效已关闭';
+  // The history stores label snapshots; changing a choice never rewrites old results.
+  lastState = '';
+}
+function paintUI(snapshot) {
+  const { state, power } = snapshot, active = state === 'tossing' || state === 'settling';
+  const percent = ['charging','tossing','settling','result'].includes(state) ? Math.round(power * 100) : 0;
+  if (percent !== lastPercent) {
+    lastPercent = percent; $('powerValue').textContent = String(percent).padStart(2, '0');
+    $('chargeProgress').setAttribute('aria-valuenow', String(percent));
+    ticks.forEach((tick, i) => tick.classList.toggle('on', i < Math.ceil(percent / 100 * ticks.length)));
+  }
+  experience.style.setProperty('--power', state === 'charging' ? power : 0);
+  $('ringProgress').style.strokeDashoffset = String(571.77 * (1 - (state === 'charging' ? power : 0)));
+  const stateKey = state + (state === 'charging' && power >= 1 ? ':full' : '');
+  if (stateKey !== lastState) {
+    lastState = stateKey; experience.dataset.state = state;
+    button.disabled = active;
+    sceneWrap.setAttribute('aria-disabled',String(active));
+    selectionControls.forEach(control=>{control.disabled=active||state==='charging';});
+    button.setAttribute('aria-busy', String(active));
+    let title = '点击轻抛', subtitle = '长按蓄力 · 松手抛出', status = '让答案，在空中揭晓', powerText = '静待你的选择';
+    if (state === 'charging') { title = power >= 1 ? '蓄力已满' : '正在蓄力'; subtitle = '松手，交给幸运'; status = power >= 1 ? '力量已满，松手即可抛出' : '缓缓放大，积蓄一点好运'; powerText = power >= 1 ? '已达满蓄力' : '能量汇聚中'; }
+    if (active) { title = state === 'settling' ? '即将揭晓' : '好运在途'; subtitle = '让可能发生'; status = '答案，正在空中旋转'; powerText = '本次抛掷能量'; }
+    if (state === 'result') { title = '再抛一次'; subtitle = '点击轻抛 · 长按蓄力'; status = snapshot.mode === 'dice' ? `${snapshot.value} 点  ·  D${snapshot.faces}` : `${choiceText(snapshot.side)}  ·  ${sideText(snapshot.side)}`; powerText = '本次抛掷能量'; $('resultLine').classList.add('revealed'); }
+    if (state === 'idle') $('resultLine').classList.remove('revealed');
+    $('buttonTitle').textContent = title; $('buttonSubtitle').textContent = subtitle; $('statusText').textContent = status; $('powerState').textContent = powerText;
+  }
+  if (state === 'charging') audio.power(power);
+}
+function loop(time) {
+  if (destroyed || document.hidden) { raf = null; return; }
+  const dt = lastTime === null ? 0 : time - lastTime; lastTime = time;
+  const state = game.tick(dt);
+  view.render(state); paintUI(state);
+  raf = requestAnimationFrame(loop);
+}
+function startLoop() { if (raf === null && !destroyed && !document.hidden) { lastTime = null; raf = requestAnimationFrame(loop); } }
+function cancelInput() {
+  const pointer=activePointer,element=activeElement;activePointer=null;activeElement=null;activeKey=false;game.cancelCharge();audio.stopCharge();
+  try{if(element && pointer!==null && element.hasPointerCapture(pointer))element.releasePointerCapture(pointer);}catch{}
+}
+function panelOpen() { return $('historyDialog').open || $('settingsDialog').open; }
+function flushClock() {
+  const now = performance.now();
+  if (lastTime !== null && !document.hidden) game.tick(now - lastTime);
+  lastTime = now;
+}
+// One input path for the model, button, mouse, touch and pen. A short press is a quick throw.
+for (const target of [button,sceneWrap]) {
+  target.addEventListener('pointerdown', e => {
+    if(e.button!==0 || e.isPrimary===false || activePointer!==null || activeKey || panelOpen())return;
+    e.preventDefault();target.focus({preventScroll:true});audio.unlock();flushClock();
+    if(!game.beginCharge())return;
+    activePointer=e.pointerId;activeElement=target;
+    try{target.setPointerCapture(e.pointerId);}catch{}
+  });
+  target.addEventListener('pointerup',e=>{
+    if(e.pointerId!==activePointer||activeElement!==target)return;
+    e.preventDefault();activePointer=null;activeElement=null;flushClock();game.release();
+    try{if(target.hasPointerCapture(e.pointerId))target.releasePointerCapture(e.pointerId);}catch{}
+  });
+  target.addEventListener('pointercancel',e=>{if(e.pointerId===activePointer)cancelInput();});
+  target.addEventListener('lostpointercapture',e=>{if(e.pointerId===activePointer)cancelInput();});
+  target.addEventListener('contextmenu',e=>e.preventDefault());
+  target.addEventListener('click',e=>{
+    // Keyboard / assistive-technology activation only. Pointerup already committed real clicks.
+    if(e.detail!==0||activeKey||activePointer!==null||panelOpen())return;
+    audio.unlock();game.quickThrow();
+  });
+}
+window.addEventListener('keydown',e=>{
+  if(!['Space','Enter'].includes(e.code)||panelOpen())return;
+  if(e.code==='Enter'&&e.target!==button&&e.target!==sceneWrap)return;
+  if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(e.target.tagName)&&e.target!==button||e.target.isContentEditable)return;
+  e.preventDefault();if(e.repeat||activePointer!==null||activeKey)return;
+  audio.unlock();flushClock();if(game.beginCharge())activeKey=e.code;
+});
+window.addEventListener('keyup',e=>{if(e.code===activeKey){e.preventDefault();activeKey=false;flushClock();game.release();}});
+for (const control of selectionControls) control.addEventListener('click',()=>{
+  const patch=control.dataset.mode?{mode:control.dataset.mode}:control.dataset.style?{style:control.dataset.style}:{faces:Number(control.dataset.faces)};
+  if(!game.setSelection(patch)){toast('这一抛结束后，再切换道具');return;}
+  store.updateSettings(patch);applySettings();paintUI(game.snapshot());view.render(game.snapshot());resize();
+});
+window.addEventListener('blur', cancelInput);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { cancelInput(); game.setPaused(true); if (raf !== null) cancelAnimationFrame(raf); raf = null; audio.suspend(); }
+  else { game.setPaused(false); startLoop(); }
+});
+function resize() { view.resize(sceneWrap.clientWidth, sceneWrap.clientHeight, window.devicePixelRatio || 1); }
+const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+if (resizeObserver) resizeObserver.observe(sceneWrap); else window.addEventListener('resize', resize);
+function renderHistory() {
+  renderCounts(); const list = $('historyList'); list.replaceChildren(); $('clearConfirm').hidden = true;
+  $('clearHistory').disabled = store.data.history.length === 0;
+  if (!store.data.history.length) {
+    const empty = document.createElement('div'); empty.className = 'history-empty';
+    empty.innerHTML = '<svg class="icon"><use href="#i-star"/></svg><div>还没有抛掷记录</div><small>你的第一份幸运，正在等你。</small>'; list.append(empty); return;
+  }
+  for (const row of store.data.history) {
+    const item = document.createElement('div'); item.className = 'history-item';
+    const icon = document.createElement('span'); icon.className = 'history-symbol'; icon.innerHTML = `<svg class="icon"><use href="#i-${row.mode === 'dice' ? 'dice' : row.side === 'heads' ? 'star' : 'moon'}"/></svg>`;
+    const detail = document.createElement('div'); detail.className = 'history-detail';
+    const label = document.createElement('strong'); label.textContent = row.mode==='dice' ? `D${row.faces} · ${row.value} 点` : `${row.label} · ${sideText(row.side)}`;
+    const time = document.createElement('span'); time.textContent = new Date(row.at).toLocaleString('zh-CN', { month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false });
+    detail.append(label, time); const power = document.createElement('span'); power.className = 'history-power'; power.textContent = row.quick ? '轻抛' : Math.round(row.power * 100); const unit = document.createElement('small'); unit.textContent = row.quick ? '' : '%'; power.append(unit); item.append(icon, detail, power); list.append(item);
+  }
+}
+function showDialog(dialog) {
+  cancelInput(); if (dialog.id === 'historyDialog') renderHistory(); else applySettings({ syncInputs: true });
+  dialog.showModal(); document.body.style.overflow = 'hidden';
+}
+$('historyButton').addEventListener('click', () => showDialog($('historyDialog')));
+$('settingsButton').addEventListener('click', () => showDialog($('settingsDialog')));
+for (const dialog of [$('historyDialog'), $('settingsDialog')]) {
+  dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', e => { if (e.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close(); });
+  dialog.addEventListener('close', () => { document.body.style.overflow = ''; $('clearConfirm').hidden = true; });
+}
+for (const [id,key] of [['soundSetting','sound'],['hapticsSetting','haptics'],['motionSetting','reducedMotion']]) $(id).addEventListener('change', e => { store.updateSettings({ [key]: e.target.checked }); applySettings(); if (key === 'sound' && e.target.checked) { audio.unlock(); audio.note(784,0,.3,.02); } });
+$('qualitySetting').addEventListener('change', e => { store.updateSettings({ quality:e.target.value }); applySettings(); toast('画质设置已更新'); });
+$('soundButton').addEventListener('click', () => { store.updateSettings({ sound: !store.data.settings.sound }); applySettings(); if (store.data.settings.sound) { audio.unlock(); audio.note(784,0,.3,.025); } });
+$('saveChoices').addEventListener('click', () => {
+  const headsLabel = $('headsInput').value.trim(), tailsLabel = $('tailsInput').value.trim();
+  if (!headsLabel || !tailsLabel) { toast('请为硬币的两面都填写一个名字'); return; }
+  store.updateSettings({ headsLabel, tailsLabel }); applySettings(); toast('两种可能，已经准备好了');
+});
+$('clearHistory').addEventListener('click', () => { $('clearConfirm').hidden = false; $('confirmClear').focus(); });
+$('cancelClear').addEventListener('click', () => { $('clearConfirm').hidden = true; $('clearHistory').focus(); });
+$('confirmClear').addEventListener('click', () => { store.clear(); renderHistory(); toast('历史记录已清空'); });
+const motionListener = () => applySettings(); if (motionQuery.addEventListener) motionQuery.addEventListener('change', motionListener);
+
+function withTimeout(promise, ms) {
+  let timer;
+  return Promise.race([promise, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Three.js loading timed out')), ms); })]).finally(() => clearTimeout(timer));
+}
+async function loadThree() {
+  if (globalThis.__LUCK_THREE_MODULE__) return import(/* @vite-ignore */ globalThis.__LUCK_THREE_MODULE__);
+  // npm install makes development independent of CDN. The standalone file uses pinned CDN copies.
+  if (location.protocol !== 'file:') {
+    for (const path of ['./vendor/three.module.js', './node_modules/three/build/three.module.js']) {
+      try { return await withTimeout(import(/* @vite-ignore */ new URL(path, document.baseURI).href), 2500); } catch {}
+    }
+  }
+  return withTimeout(Promise.any([
+    import(/* @vite-ignore */ 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'),
+    import(/* @vite-ignore */ 'https://unpkg.com/three@0.160.0/build/three.module.js')
+  ]), 10000);
+}
+async function initializeRenderer() {
+  const attempt = ++loadAttempt;
+  $('retryRenderer').hidden = true; $('rendererLabel').textContent = '正在加载 3D';
+  if (forceFallback) { $('rendererLabel').textContent = '兼容模式 · 2D'; document.documentElement.dataset.renderer = 'fallback'; return; }
+  try {
+    const THREE = await loadThree();
+    if (destroyed || attempt !== loadAttempt) return;
+    const next = createCoinScene({ THREE, canvas: $('coinCanvas'), width: sceneWrap.clientWidth, height: sceneWrap.clientHeight, pixelRatio: window.devicePixelRatio || 1, quality: store.data.settings.quality });
+    next.render(game.snapshot()); view.dispose(); view = next; webglView = next;
+    document.documentElement.dataset.renderer = 'webgl'; $('rendererLabel').textContent = 'LIVE 3D · THREE.JS';
+    window.dispatchEvent(new CustomEvent('luck:renderer-ready'));
+  } catch (error) {
+    if (destroyed || attempt !== loadAttempt) return;
+    console.warn('[LUCK] 3D unavailable; using explicitly labelled 2D fallback.', error);
+    document.documentElement.dataset.renderer = 'fallback'; $('rendererLabel').textContent = '兼容模式 · 2D'; $('retryRenderer').hidden = false;
+    toast('3D 暂不可用，已切换 2D 模式；可检查网络后重试');
+  }
+}
+$('retryRenderer').addEventListener('click', () => initializeRenderer());
+$('coinCanvas').addEventListener('webglcontextlost', e => {
+  e.preventDefault(); cancelInput(); if (webglView) { webglView.dispose(); webglView = null; }
+  $('fallbackScene').hidden = false; $('fallbackDust').replaceChildren(); view = createFallback($('fallbackScene'));
+  document.documentElement.dataset.renderer = 'fallback'; $('rendererLabel').textContent = '图形上下文丢失 · 2D'; $('retryRenderer').hidden = false;
+  toast('图形渲染已中断，暂用 2D 模式');
+});
+$('coinCanvas').addEventListener('webglcontextrestored', () => { if (!destroyed) initializeRenderer(); });
+function dispose() {
+  if (destroyed) return; destroyed = true; ++loadAttempt;
+  if (raf !== null) cancelAnimationFrame(raf); raf = null;
+  clearTimeout(toastTimer); resizeObserver?.disconnect(); game.dispose(); view.dispose(); audio.dispose();
+  motionQuery.removeEventListener?.('change', motionListener);
+}
+// Preserve the live scene when entering bfcache; dispose only on permanent navigation.
+window.addEventListener('pagehide', event => { if (!event.persisted) dispose(); else { game.setPaused(true); if (raf !== null) cancelAnimationFrame(raf); raf = null; } });
+window.addEventListener('pageshow', event => { if (event.persisted) { game.setPaused(false); startLoop(); } });
+applySettings({ syncInputs: true }); renderCounts(); paintUI(game.snapshot()); startLoop(); initializeRenderer();
+if (testMode) window.__LUCK_TEST__ = { game, store, getRenderer: () => view.getDiagnostics(), dispose };
+
+</script>
+</body>
+</html>
